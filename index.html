@@ -3,497 +3,993 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sarathy — Your Financial Companion</title>
+<title>Sarathy — Namaste, Arjun 🪔</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--or:#E87722;--orl:#FFF3E8;--orm:#FDDBB8;--dk:#1C1917;--tx:#44403C;--mu:#A8A29E;--bg:#F5F5F4;--cd:#FFFFFF;--br:rgba(0,0,0,0.08);--gn:#16A34A;--gnb:#F0FDF4;--rd:#DC2626;--rdb:#FEF2F2;--am:#D97706;--amb:#FFFBEB;--bl:#2563EB;--blb:#EFF6FF;--pu:#7C3AED;--pub:#F5F3FF;}
-body{font-family:'DM Sans',sans-serif;background:#E8E5E0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px}
-.phone{width:375px;height:790px;background:var(--bg);border-radius:44px;border:2px solid rgba(0,0,0,0.14);overflow:hidden;position:relative;box-shadow:0 40px 80px rgba(0,0,0,0.2),0 0 0 1px rgba(255,255,255,0.5) inset}
-.screen{display:none;flex-direction:column;height:100%}
+:root{
+  --s:#E8722A;--s2:#C5591A;--sw:#FFF3E8;--sm:#FDDBB8;
+  --gold:#C9963A;--goldsw:#FBF3E4;--goldm:#EDD49A;
+  --teal:#0F766E;--tealb:#F0FDFA;
+  --ink:#1C1410;--ink2:#4A3828;--ink3:#8C7560;
+  --cream:#FDFAF5;--cream2:#F6EFE3;--cream3:#EDE3D0;
+  --line:rgba(74,56,40,0.1);
+  --gn:#2D7A4F;--gnb:#EDF7F2;
+  --rd:#C13333;--rdb:#FDF1F1;
+  --bl:#1D4ED8;--blb:#EFF6FF;
+  --pu:#6D28D9;--pub:#F5F3FF;
+}
+body{font-family:'DM Sans',sans-serif;background:radial-gradient(ellipse at top,#2A1A08 0%,#0F0A05 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.phone{width:375px;height:812px;background:var(--cream);border-radius:44px;overflow:hidden;position:relative;box-shadow:0 0 0 1px rgba(255,255,255,0.07),0 50px 100px rgba(0,0,0,0.65),0 0 80px rgba(232,114,42,0.14),0 0 140px rgba(201,150,58,0.07)}
+.screen{display:none;flex-direction:column;height:100%;position:absolute;inset:0;background:var(--cream);z-index:1}
 .screen.active{display:flex}
-.sb{background:var(--or);padding:12px 20px 8px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
-.sb .t{color:white;font-size:12px;font-weight:600}
-.sb .ic{color:white;font-size:14px;display:flex;gap:6px}
-.sc{flex:1;overflow-y:auto;scrollbar-width:none}
-.sc::-webkit-scrollbar{display:none}
-.nb{background:white;border-top:0.5px solid var(--br);display:flex;padding:8px 0 14px;flex-shrink:0}
-.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;color:var(--mu);background:none;border:none;padding:4px 0;transition:color 0.2s;font-family:'DM Sans',sans-serif}
-.ni.on{color:var(--or)}
-.ni i{font-size:20px}
-.ni span{font-size:10px;font-weight:500}
-.sh{background:var(--or);padding:16px 20px 20px;flex-shrink:0}
-.sh h1{font-family:'DM Serif Display',serif;color:white;font-size:22px;font-weight:400;margin-bottom:2px}
-.sh p{color:rgba(255,255,255,0.8);font-size:13px}
-.card{background:var(--cd);border-radius:16px;border:0.5px solid var(--br);padding:16px;margin:0 16px 12px}
-.sl{padding:4px 20px 8px;font-size:13px;font-weight:600;color:var(--dk)}
-.gr{padding:16px 20px 4px}
-.gr .nm{font-family:'DM Serif Display',serif;font-size:24px;color:var(--dk);font-weight:400}
-.gr .sb2{font-size:13px;color:var(--mu);margin-top:2px}
-.ms{margin:8px 16px 12px;border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer}
-.ms.org{background:var(--or)}
-.ms.wh{background:white;border:0.5px solid var(--br)}
-.mic{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.mic.lo{background:rgba(255,255,255,0.2);color:white}
-.mic.ti{background:var(--orl);color:var(--or)}
-.mt p.w{color:white;font-size:14px;font-weight:500;line-height:1.3}
-.mt p.d{color:var(--dk);font-size:14px;font-weight:500}
-.mt span.w{color:rgba(255,255,255,0.75);font-size:12px}
-.mt span.m{color:var(--mu);font-size:12px}
-.mt{flex:1}
-.mg{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 12px}
-.mc{background:white;border-radius:14px;border:0.5px solid var(--br);padding:14px}
-.mc .lb{font-size:11px;color:var(--mu);font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
-.mc .am{font-size:22px;font-weight:600;color:var(--dk);margin:4px 0 2px}
-.mc .sb3{font-size:11px}
-.mc .sb3.gn{color:var(--gn)}
-.mc .sb3.rd{color:var(--rd)}
-.mc .sb3.mu{color:var(--mu)}
-.bb{height:4px;background:#F5F5F4;border-radius:2px;margin-top:8px;overflow:hidden}
-.bf{height:100%;border-radius:2px;background:var(--or)}
-.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 16px 16px}
-.qb{display:flex;flex-direction:column;align-items:center;gap:6px;background:white;border:0.5px solid var(--br);border-radius:12px;padding:12px 6px;cursor:pointer;color:var(--dk);transition:transform 0.15s;font-family:'DM Sans',sans-serif}
-.qb:active{transform:scale(0.95)}
-.qb i{font-size:20px;color:var(--or)}
-.qb span{font-size:10px;font-weight:500;text-align:center;line-height:1.2}
-.mrc{background:var(--orl);border:1px solid var(--orm)}
-.mi{font-size:13px;color:var(--tx);line-height:1.6;margin-bottom:10px}
-.mi strong{color:var(--or)}
-.mt2{display:inline-flex;align-items:center;gap:4px;background:var(--or);color:white;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:500}
-.ml{font-size:11px;color:var(--or);font-weight:500;cursor:pointer}
-.po{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:flex-end;z-index:100}
-.pm{background:white;border-radius:24px 24px 0 0;width:100%;padding:24px 20px}
-.pm .pl{font-size:12px;font-weight:600;color:var(--or);text-transform:uppercase;letter-spacing:0.08em}
-.pm h2{font-family:'DM Serif Display',serif;font-size:20px;color:var(--dk);margin-top:4px;font-weight:400}
-.pm .pa{font-size:32px;font-weight:700;color:var(--or);margin:12px 0 2px}
-.pm .pi{font-size:15px;color:var(--tx)}
-.pm .ps{background:var(--orl);border-radius:12px;padding:12px;margin:16px 0}
-.pm .pf{font-size:11px;color:var(--or);font-weight:600;margin-bottom:4px}
-.pm .ps p{font-size:13px;color:var(--tx);line-height:1.5}
-.pb2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.by{background:var(--or);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
-.bn2{background:white;color:var(--tx);border:1px solid var(--br);border-radius:12px;padding:14px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
-.ch{display:flex;flex-direction:column;height:100%}
-.chh{background:var(--or);padding:14px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0}
-.ca{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;color:white;font-size:16px}
-.ci p{color:white;font-size:15px;font-weight:500}
-.ci span{color:rgba(255,255,255,0.75);font-size:12px}
-.do{width:7px;height:7px;background:#4ADE80;border-radius:50%;display:inline-block;margin-right:4px}
-.cm{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scrollbar-width:none}
-.cm::-webkit-scrollbar{display:none}
-.msg{display:flex;gap:8px;max-width:85%}
-.msg.us{align-self:flex-end;flex-direction:row-reverse}
-.bu{padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.55;color:var(--dk)}
-.msg.ag .bu{background:white;border:0.5px solid var(--br);border-bottom-left-radius:4px}
-.msg.us .bu{background:var(--or);color:white;border-bottom-right-radius:4px}
-.av{width:28px;height:28px;flex-shrink:0;border-radius:50%;background:var(--orl);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--or);font-weight:600;font-family:'DM Serif Display',serif;align-self:flex-end}
-.cs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.cb{background:var(--orl);color:var(--or);border:1px solid var(--orm);border-radius:20px;padding:6px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
-.cb:hover{background:var(--or);color:white}
-.cb:disabled{opacity:0.5;cursor:default}
-.ty{display:flex;gap:4px;align-items:center;padding:10px 14px;background:white;border:0.5px solid var(--br);border-radius:18px;border-bottom-left-radius:4px;width:fit-content}
-.td{width:6px;height:6px;border-radius:50%;background:var(--mu);animation:bn 1.2s infinite}
-.td:nth-child(2){animation-delay:0.2s}
-.td:nth-child(3){animation-delay:0.4s}
-@keyframes bn{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
-.cib{padding:12px 16px;background:white;border-top:0.5px solid var(--br);display:flex;gap:10px;align-items:flex-end;flex-shrink:0}
-.ci2{flex:1;background:var(--bg);border:0.5px solid var(--br);border-radius:20px;padding:10px 16px;font-size:14px;font-family:'DM Sans',sans-serif;resize:none;max-height:80px;line-height:1.4;color:var(--dk);outline:none}
-.sb4{width:38px;height:38px;border-radius:50%;background:var(--or);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity 0.15s}
-.sb4 i{color:white;font-size:16px}
-.sb4:disabled{opacity:0.4}
-.gc{background:white;border-radius:16px;border:0.5px solid var(--br);padding:16px;margin:0 16px 12px}
-.gt{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.gn2{font-size:15px;font-weight:600;color:var(--dk)}
-.gct{font-size:11px;color:var(--mu);margin-top:2px}
-.gp{font-size:18px;font-weight:600;color:var(--or);font-family:'DM Serif Display',serif}
-.gam{display:flex;justify-content:space-between;font-size:12px;color:var(--mu);margin-bottom:6px}
-.gam strong{color:var(--dk)}
-.gb{height:8px;background:var(--orl);border-radius:4px;overflow:hidden;margin-bottom:12px}
-.gbf{height:100%;background:var(--or);border-radius:4px}
-.ga{width:100%;background:var(--orl);color:var(--or);border:1px dashed var(--orm);border-radius:10px;padding:9px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px}
-.ngb{margin:0 16px 16px;background:var(--or);color:white;border:none;border-radius:14px;padding:14px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;width:calc(100% - 32px);display:flex;align-items:center;justify-content:center;gap:8px}
-.in-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid #BFDBFE}
-.in-row:last-child{border-bottom:none}
-.in-label{font-size:13px;color:var(--dk)}
-.in-badge{border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600}
-.in-badge.ok{background:var(--gnb);color:var(--gn)}
-.in-badge.no{background:var(--rdb);color:var(--rd)}
-.in-badge.na{background:#F5F5F4;color:var(--mu)}
-.ns{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 12px}
-.nc{background:white;border-radius:12px;border:0.5px solid var(--br);padding:12px}
-.nc .vl{font-size:20px;font-weight:600;color:var(--dk);font-family:'DM Serif Display',serif}
-.nc .lb2{font-size:11px;color:var(--mu);margin-top:2px}
-.nc .sv{font-size:11px;color:var(--gn);font-weight:500}
-.ns2{display:flex;gap:14px;padding:14px 16px;border-bottom:0.5px solid var(--br)}
-.ns2:last-child{border-bottom:none}
-.sn{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
-.sn.dn{background:var(--gnb);color:var(--gn)}
-.sn.ac{background:var(--or);color:white}
-.sn.td2{background:#F5F5F4;color:var(--mu)}
-.st{font-size:14px;font-weight:500;color:var(--dk);margin-bottom:2px}
-.sd{font-size:12px;color:var(--mu);line-height:1.5}
-.sc2{display:inline-flex;align-items:center;gap:4px;color:var(--or);font-size:12px;font-weight:500;margin-top:6px;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;padding:0}
-.share-card{background:var(--or);border-radius:16px;padding:18px;margin:0 16px 12px;position:relative;overflow:hidden}
-.share-card h3{font-family:'DM Serif Display',serif;color:white;font-size:17px;font-weight:400;margin-bottom:4px}
-.share-card p{color:rgba(255,255,255,0.8);font-size:12px;line-height:1.5;margin-bottom:12px}
-.share-btn{background:white;color:var(--or);border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px}
-.sip-card{background:var(--or);border-radius:14px;padding:16px;margin:0 16px 12px}
-.sip-card h3{font-family:'DM Serif Display',serif;color:white;font-size:17px;font-weight:400;margin-bottom:6px}
-.sip-card p{color:rgba(255,255,255,0.85);font-size:12px;line-height:1.6;margin-bottom:12px}
-.sip-calc{background:rgba(255,255,255,0.15);border-radius:10px;padding:12px}
-.sip-calc label{color:rgba(255,255,255,0.8);font-size:12px}
-.sip-calc input[type=range]{width:100%;accent-color:white;margin:4px 0 8px;display:block}
-.sip-result{text-align:center;margin-top:10px}
-.sip-result .big{font-family:'DM Serif Display',serif;font-size:28px;color:white}
-.sip-result .lbl{font-size:11px;color:rgba(255,255,255,0.75)}
-.cmp-row{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:0.5px solid var(--br)}
-.cmp-row:last-child{border-bottom:none}
-.cmp-ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.cmp-nm{font-size:13px;font-weight:600;color:var(--dk)}
-.cmp-tx{font-size:11px;color:var(--mu);line-height:1.4;margin-top:2px}
-.cmp-pct{font-size:14px;font-weight:600;color:var(--gn)}
-.cmp-lb{font-size:10px;color:var(--mu)}
-.ab{margin:0 16px 12px;background:var(--amb);border:1px solid #FDE68A;border-radius:12px;padding:12px;display:flex;gap:10px;align-items:flex-start}
-.ab i{color:var(--am);font-size:18px;flex-shrink:0;margin-top:1px}
-.ab p{font-size:13px;color:var(--tx);line-height:1.5}
-.ab strong{color:var(--am)}
-.bc{display:flex;gap:4px;height:120px;align-items:flex-end;padding:0 16px 4px}
-.bco{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
-.bcf{width:100%;background:var(--orm);border-radius:4px 4px 0 0}
-.bcf.td3{background:var(--or)}
-.bcl{font-size:10px;color:var(--mu)}
-.spc{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:0.5px solid var(--br)}
-.spc:last-child{border-bottom:none}
-.sci{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.scn{font-size:14px;font-weight:500;color:var(--dk)}
-.sct{font-size:11px;color:var(--mu)}
-.sca{font-size:15px;font-weight:600;color:var(--dk);margin-left:auto}
+.sb{background:var(--ink);padding:14px 24px 10px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.st{color:rgba(255,255,255,0.9);font-size:13px;font-weight:600}
+.si{color:rgba(255,255,255,0.45);font-size:12px}
+.scroll{flex:1;overflow-y:auto;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.nav{background:var(--ink);display:flex;padding:10px 0 20px;flex-shrink:0}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.28);font-family:'DM Sans',sans-serif;transition:color 0.2s;padding:4px 0}
+.nb.on{color:var(--gold)}
+.nb svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.nb span{font-size:9px;font-weight:500}
+.sec{padding:14px 24px 8px;font-size:11px;color:var(--ink3);letter-spacing:0.09em;text-transform:uppercase;font-weight:500}
+.card{background:white;border-radius:18px;border:1px solid var(--line);margin:0 16px 10px;overflow:hidden}
+
+/* HOME HERO */
+.hero{background:linear-gradient(160deg,#2A1408 0%,#1A0C04 55%,#0F0802 100%);padding:20px 24px 22px;position:relative;overflow:hidden;flex-shrink:0}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(232,114,42,0.22) 0%,transparent 65%)}
+.h-label{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px}
+.h-greet{font-family:'Cormorant Garamond',serif;font-size:26px;color:white;font-weight:500;line-height:1.25;margin-bottom:3px}
+.h-greet em{color:var(--gold);font-style:italic}
+.h-sub{font-size:12px;color:rgba(255,255,255,0.38);margin-bottom:10px;font-style:italic}
+.h-msg{font-size:13px;color:rgba(255,255,255,0.68);line-height:1.65;margin-bottom:16px}
+.h-msg strong{color:white;font-weight:500}
+.hw{color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px}
+.h-btn{background:var(--gold);color:var(--ink);border:none;border-radius:13px;padding:12px 18px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:7px;transition:opacity 0.15s}
+
+/* SNAPSHOT ROW */
+.snap-row{display:flex;gap:8px;padding:0 16px 10px}
+.snap-item{flex:1;background:white;border-radius:14px;border:1px solid var(--line);padding:12px}
+.snap-item.dark{background:linear-gradient(135deg,#0F2D22 0%,var(--teal) 100%)}
+.sn-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;line-height:1;margin-bottom:3px}
+.sn-label{font-size:10px;color:var(--ink3);line-height:1.3}
+.sn-trend{font-size:10px;font-weight:600;margin-top:3px}
+
+/* RUPEE ALERT */
+.rupee-alert{margin:0 16px 10px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.ra-top{background:linear-gradient(135deg,#2A0808 0%,#4A1010 100%);padding:14px 16px}
+.ra-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(232,114,42,0.22);border:1px solid rgba(232,114,42,0.3);color:#FDDBB8;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;margin-bottom:6px}
+.ra-title{font-family:'Cormorant Garamond',serif;font-size:17px;color:white;font-weight:400;line-height:1.35;margin-bottom:4px}
+.ra-desc{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5}
+.ra-chart{background:white;padding:14px 16px}
+.ra-year-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.ra-yr{font-size:10px;color:var(--ink3);width:32px;flex-shrink:0}
+.ra-bar-wrap{flex:1;height:20px;background:var(--cream2);border-radius:3px;overflow:hidden}
+.ra-bar{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;font-weight:600;color:white}
+.ra-v{font-size:11px;font-weight:700;color:var(--ink3);width:72px;text-align:right;flex-shrink:0}
+.ra-insight{background:var(--rdb);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:8px;align-items:flex-start}
+.ra-insight p{font-size:12px;color:var(--rd);line-height:1.5;font-weight:500}
+.ra-insight p strong{color:#8B1A1A}
+
+/* GOALS */
+.goal-card{margin:0 16px 8px;background:white;border-radius:16px;border:1px solid var(--line);padding:14px}
+.gc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.gc-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.gc-sub{font-size:11px;color:var(--ink3)}
+.gc-pct{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--s);font-weight:500}
+.gc-bar{height:6px;background:var(--sw);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.gc-fill{height:100%;background:var(--s);border-radius:3px}
+.gc-nums{display:flex;justify-content:space-between;font-size:11px;color:var(--ink3)}
+.gc-nums strong{color:var(--ink)}
+
+/* SARATHY TIP */
+.s-tip{margin:0 16px 10px;background:rgba(232,114,42,0.06);border:1px solid rgba(232,114,42,0.13);border-radius:16px;padding:14px;display:flex;gap:10px}
+.s-tip-av{width:30px;height:30px;background:var(--s);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;color:white;font-style:italic;flex-shrink:0}
+.s-tip-content p{font-size:11px;font-weight:600;color:var(--s);margin-bottom:3px}
+.s-tip-content span{font-size:13px;color:var(--ink2);line-height:1.55}
+
+/* REMITTANCE */
+.rem-card{margin:0 16px 10px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.rem-top{background:linear-gradient(135deg,#0F2D22 0%,var(--teal) 100%);padding:14px 16px}
+.rem-title{font-family:'Cormorant Garamond',serif;font-size:17px;color:white;font-weight:400;line-height:1.3;margin-bottom:3px}
+.rem-title em{color:var(--gold);font-style:italic}
+.rem-sub{font-size:11px;color:rgba(255,255,255,0.5)}
+.rem-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:0.5px solid var(--line);background:white}
+.rem-row:last-child{border-bottom:none}
+.rem-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:1px}
+.rem-detail{font-size:11px;color:var(--ink3)}
+.rem-val{font-size:14px;font-weight:700;text-align:right;flex-shrink:0}
+.bp{background:var(--gnb);color:var(--gn);border-radius:20px;padding:2px 7px;font-size:10px;font-weight:600}
+
+/* ── INVEST SCREEN ── */
+.invest-top{background:linear-gradient(160deg,#2A1408 0%,#1A0C04 100%);padding:20px 24px 22px;flex-shrink:0;position:relative;overflow:hidden}
+.invest-top::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(201,150,58,0.2) 0%,transparent 65%)}
+.it-label{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+.it-title{font-family:'Cormorant Garamond',serif;font-size:24px;color:white;font-weight:500;line-height:1.25;margin-bottom:3px}
+.it-title em{color:var(--gold);font-style:italic}
+.it-sub{font-size:12px;color:rgba(255,255,255,0.42)}
+
+/* TAB SWITCHER */
+.tab-bar{display:flex;gap:0;padding:12px 16px 6px;overflow-x:auto;scrollbar-width:none}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-btn{background:var(--cream2);color:var(--ink3);border:1px solid var(--line);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;margin-right:7px;transition:all 0.15s;flex-shrink:0}
+.tab-btn.on{background:var(--s);color:white;border-color:var(--s)}
+
+/* INVESTMENT CARDS */
+.inv-card{margin:0 16px 10px;background:white;border-radius:18px;border:1px solid var(--line);overflow:hidden}
+.inv-card-top{padding:14px 16px;border-bottom:0.5px solid var(--line)}
+.inv-badge{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:600;margin-bottom:6px}
+.inv-badge.liquid{background:#EFF6FF;color:var(--bl)}
+.inv-badge.moderate{background:var(--goldsw);color:var(--gold)}
+.inv-badge.growth{background:var(--gnb);color:var(--gn)}
+.inv-badge.safe{background:var(--cream2);color:var(--ink3)}
+.inv-badge.pr{background:var(--pub);color:var(--pu)}
+.inv-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.inv-desc{font-size:12px;color:var(--ink3);line-height:1.5}
+.inv-stats{display:flex;background:var(--cream2);padding:10px 14px;gap:0}
+.inv-stat{flex:1;text-align:center;border-right:0.5px solid var(--line)}
+.inv-stat:last-child{border-right:none}
+.inv-stat-val{font-size:13px;font-weight:700;color:var(--ink)}
+.inv-stat-val.green{color:var(--gn)}
+.inv-stat-val.gold{color:var(--gold)}
+.inv-stat-val.blue{color:var(--bl)}
+.inv-stat-val.orange{color:var(--s)}
+.inv-stat-label{font-size:10px;color:var(--ink3);margin-top:2px}
+.inv-action{padding:10px 14px;display:flex;gap:8px}
+.inv-btn-primary{flex:1;background:var(--s);color:white;border:none;border-radius:10px;padding:10px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.inv-btn-sarathy{flex:1;background:var(--cream2);color:var(--ink);border:none;border-radius:10px;padding:10px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* PLATFORM CARD */
+.platform-card{margin:0 16px 10px;background:white;border-radius:16px;border:1px solid var(--line);padding:14px}
+.pc-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.pc-logo{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.pc-info{flex:1}
+.pc-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.pc-tagline{font-size:12px;color:var(--ink3);line-height:1.35}
+.pc-tag{font-size:11px;font-weight:600;border-radius:20px;padding:2px 8px;flex-shrink:0}
+.pc-features{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.pc-feat{background:var(--cream2);color:var(--ink3);border-radius:20px;padding:3px 9px;font-size:11px}
+.pc-btn{width:100%;background:var(--s);color:white;border:none;border-radius:10px;padding:10px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:5px}
+
+/* EDUCATION FUND */
+.edu-card{margin:0 16px 10px;background:linear-gradient(135deg,#0F2D22 0%,var(--teal) 100%);border-radius:18px;padding:16px;position:relative;overflow:hidden}
+.edu-card::after{content:'🎓';position:absolute;right:14px;top:10px;font-size:42px;opacity:0.18}
+.edu-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px}
+.edu-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:white;font-weight:400;line-height:1.35;margin-bottom:10px}
+.edu-title em{color:var(--gold);font-style:italic}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.edu-item{background:rgba(255,255,255,0.1);border-radius:10px;padding:10px}
+.edu-val{font-family:'Cormorant Garamond',serif;font-size:18px;color:white;font-weight:500;line-height:1}
+.edu-lbl{font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px}
+.edu-bar{height:5px;background:rgba(255,255,255,0.15);border-radius:3px;overflow:hidden;margin:10px 0 6px}
+.edu-fill{height:100%;background:var(--gold);border-radius:3px}
+.edu-nums{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.5)}
+.edu-btn{width:100%;background:var(--gold);color:var(--ink);border:none;border-radius:10px;padding:11px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px}
+
+/* PR SCHEMES */
+.pr-card{margin:0 16px 10px;background:white;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.pr-top{background:linear-gradient(135deg,var(--pu) 0%,#4C1D95 100%);padding:14px 16px}
+.pr-title{font-family:'Cormorant Garamond',serif;font-size:17px;color:white;font-weight:400;line-height:1.35;margin-bottom:3px}
+.pr-sub{font-size:12px;color:rgba(255,255,255,0.55)}
+.pr-item{padding:12px 14px;border-bottom:0.5px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.pr-item:last-child{border-bottom:none}
+.pr-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.pr-info{flex:1}
+.pr-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.pr-desc{font-size:12px;color:var(--ink3);line-height:1.45}
+.pr-tag{font-size:11px;font-weight:600;border-radius:20px;padding:2px 9px;flex-shrink:0;align-self:center}
+.pr-tag.open{background:var(--gnb);color:var(--gn)}
+.pr-tag.check{background:var(--goldsw);color:var(--gold)}
+.pr-tag.info{background:var(--pub);color:var(--pu)}
+
+/* INVEST TAB SECTIONS */
+.inv-section{display:none}
+.inv-section.active{display:block}
+
+/* CHAT */
+.chat-hdr{background:linear-gradient(160deg,#2A1408 0%,#1A0C04 100%);padding:14px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.c-av{width:42px;height:42px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--ink);font-style:italic;font-weight:600}
+.c-info p{color:white;font-size:15px;font-weight:600}
+.c-info span{color:rgba(255,255,255,0.45);font-size:12px}
+.odot{width:7px;height:7px;background:#4ADE80;border-radius:50%;display:inline-block;margin-right:4px}
+.c-back{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:20px;color:rgba(255,255,255,0.7);padding:6px 12px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.chat-msgs{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:12px;scrollbar-width:none;background:var(--cream)}
+.chat-msgs::-webkit-scrollbar{display:none}
+.msg{display:flex;gap:10px;max-width:85%}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.m-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--s),var(--s2));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:white;font-style:italic;flex-shrink:0;align-self:flex-end}
+.bubble{padding:11px 15px;border-radius:20px;font-size:14px;line-height:1.6;color:var(--ink)}
+.msg.agent .bubble{background:white;border:1px solid var(--line);border-bottom-left-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+.msg.user .bubble{background:var(--s);color:white;border-bottom-right-radius:4px}
+.qrs{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.qr{background:var(--cream2);color:var(--s);border:1px solid rgba(232,114,42,0.2);border-radius:20px;padding:6px 13px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.qr:hover{background:var(--s);color:white}
+.qr:disabled{opacity:0.4;cursor:default}
+.ty-row{display:flex;gap:10px;max-width:85%}
+.ty-bub{background:white;border:1px solid var(--line);border-radius:20px;border-bottom-left-radius:4px;padding:11px 15px;display:flex;gap:5px;align-items:center}
+.td{width:6px;height:6px;border-radius:50%;background:var(--ink3);animation:tb 1.2s infinite}
+.td:nth-child(2){animation-delay:0.2s}.td:nth-child(3){animation-delay:0.4s}
+@keyframes tb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.c-inp-row{padding:10px 14px;background:white;border-top:1px solid var(--line);display:flex;gap:8px;align-items:flex-end;flex-shrink:0}
+.c-ta{flex:1;background:var(--cream2);border:1px solid var(--line);border-radius:18px;padding:9px 14px;font-size:14px;font-family:'DM Sans',sans-serif;resize:none;max-height:80px;line-height:1.4;color:var(--ink);outline:none}
+.c-send{width:40px;height:40px;border-radius:50%;background:var(--s);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-send svg{width:17px;height:17px;stroke:white;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.c-send:disabled{opacity:0.35}
+
+/* STORY */
+.story-top{background:linear-gradient(160deg,#2A1408 0%,#1A0C04 100%);padding:20px 24px 24px;flex-shrink:0;position:relative;overflow:hidden}
+.story-top::before{content:'🪔';position:absolute;right:18px;top:18px;font-size:60px;opacity:0.1}
+.sg2{font-family:'Cormorant Garamond',serif;font-size:25px;color:white;font-weight:500;line-height:1.25;margin-bottom:3px}
+.sg2 em{color:var(--gold);font-style:italic}
+.ss2{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:10px}
+.courage{background:rgba(201,150,58,0.13);border:1px solid rgba(201,150,58,0.2);border-radius:12px;padding:11px 14px;font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(255,255,255,0.8);line-height:1.6;font-style:italic}
+.courage strong{color:var(--gold);font-style:normal}
+.sarathy-letter{margin:12px 16px 10px;background:linear-gradient(135deg,#2A1408 0%,var(--s) 100%);border-radius:18px;padding:18px;position:relative;overflow:hidden}
+.sarathy-letter::after{content:'🪔';position:absolute;right:12px;bottom:8px;font-size:48px;opacity:0.13}
+.sl-from{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:7px}
+.sl-text{font-family:'Cormorant Garamond',serif;font-size:16px;color:white;font-weight:400;line-height:1.7}
+.sl-text em{color:var(--gold);font-style:italic}
+.sl-sign{margin-top:12px;font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(255,255,255,0.5);font-style:italic}
+.persona-blk{margin:0 16px 10px;background:white;border-radius:18px;border:1px solid var(--line);overflow:hidden}
+.pb-top{background:linear-gradient(135deg,#2A1408 0%,#4A2010 100%);padding:14px 16px;position:relative;overflow:hidden}
+.pb-top::after{content:'🪔';position:absolute;right:10px;top:8px;font-size:38px;opacity:0.18}
+.pb-badge{display:inline-flex;align-items:center;gap:4px;background:var(--gold);color:var(--ink);border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;margin-bottom:7px}
+.pb-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:white;font-weight:500;margin-bottom:3px}
+.pb-desc{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;margin-bottom:10px}
+.pb-traits{display:flex;flex-wrap:wrap;gap:5px}
+.pt{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border-radius:20px;padding:2px 9px;font-size:11px;font-weight:500}
+.pb-stats{display:grid;grid-template-columns:1fr 1fr}
+.pbs{padding:12px 14px;border-right:0.5px solid var(--line);border-top:0.5px solid var(--line)}
+.pbs:nth-child(2){border-right:none}.pbs:nth-child(3){border-right:0.5px solid var(--line)}.pbs:nth-child(4){border-right:none}
+.pbs-val{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--s);font-weight:500;line-height:1}
+.pbs-label{font-size:10px;color:var(--ink3);margin-top:2px}
+.journal{margin:0 16px 8px;background:var(--cream2);border-radius:14px;padding:14px;border-left:3px solid var(--s)}
+.j-date{font-size:11px;color:var(--ink3);margin-bottom:4px;font-style:italic}
+.j-text{font-size:13px;color:var(--ink2);line-height:1.6}
+.j-text strong{color:var(--s);font-weight:600}
 </style>
 </head>
 <body>
 <div class="phone">
 
-<!-- HOME -->
-<div class="screen active" id="screen-home">
-  <div class="sb"><span class="t">9:41</span><div class="ic"><i class="ti ti-wifi"></i><i class="ti ti-battery"></i></div></div>
-  <div class="sc">
-    <div class="gr"><p class="nm">Good morning, Aashmiin ✦</p><p class="sb2">Thursday · May 28 · SGD $1,247 available</p></div>
-    <div class="ms org" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')">
-      <div class="mic lo"><i class="ti ti-message-circle"></i></div>
-      <div class="mt"><p class="w">How are you feeling about money today?</p><span class="w">Sarathy is here — tap to check in</span></div>
-      <i class="ti ti-chevron-right" style="color:rgba(255,255,255,0.7);font-size:18px;"></i>
+<!-- ═══════════ HOME ═══════════ -->
+<div class="screen active" id="s-home">
+  <div class="sb"><span class="st">9:41 AM</span><span class="si">Singapore 🇸🇬</span></div>
+  <div class="scroll">
+    <div class="hero">
+      <div style="font-size:16px;margin-bottom:5px;">🪔</div>
+      <div class="h-label">Sarathy · Aapka Saathi</div>
+      <div class="h-greet">Namaste, <em>Arjun bhai</em> 🙏</div>
+      <div class="h-sub">Your companion in Singapore. Hamesha aapke saath.</div>
+      <div class="h-msg">You left your <span class="hw">ghar</span> and <span class="hw">parivaar</span> to build something better here. That strength deserves a financial companion who is genuinely on your side — not your bank's side.<br><br><strong>Your India savings may be quietly losing value. Sarathy shows you the full picture.</strong></div>
+      <button class="h-btn" onclick="openChat('morning')">
+        <svg viewBox="0 0 24 24" width="15" height="15" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Baat karte hain
+      </button>
     </div>
-    <div class="mg">
-      <div class="mc"><div class="lb">This Month In</div><div class="am">$2,400</div><div class="sb3 gn">↑ Allowance received</div></div>
-      <div class="mc"><div class="lb">Spent So Far</div><div class="am">$1,153</div><div class="sb3 rd">↑ $180 vs last month</div><div class="bb"><div class="bf" style="width:48%"></div></div></div>
-      <div class="mc"><div class="lb">Remaining</div><div class="am">$1,247</div><div class="sb3 gn">On track ✓</div></div>
-      <div class="mc"><div class="lb">Goals Saved</div><div class="am">$1,785</div><div class="sb3 mu">across 2 goals</div></div>
-    </div>
-    <div class="ms wh" onclick="showPause()">
-      <div class="mic ti"><i class="ti ti-hand-stop"></i></div>
-      <div class="mt"><p class="d">Pause Button active</p><span class="m">Sarathy checks in before purchases over $50</span></div>
-      <i class="ti ti-chevron-right" style="color:var(--mu);font-size:18px;"></i>
-    </div>
-    <div class="sl" style="margin-top:10px;">Mood–Money Mirror</div>
-    <div class="card mrc">
-      <p class="mi">You spent <strong>$312 more on food delivery</strong> in weeks when you checked in feeling stressed. Last month that was 3 weeks in a row.</p>
-      <div style="display:flex;gap:10px;align-items:center;"><div class="mt2"><i class="ti ti-sparkles" style="font-size:12px;"></i> Sarathy noticed</div><span class="ml" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')">Talk about it →</span></div>
-    </div>
-    <div class="sl">Sarathy alerts</div>
-    <div style="padding:0 16px 4px;display:flex;flex-direction:column;gap:8px;">
-      <div style="background:var(--rdb);border:1px solid #FECDD3;border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center;cursor:pointer;" onclick="go('goals')">
-        <i class="ti ti-shield-exclamation" style="color:var(--rd);font-size:18px;flex-shrink:0;"></i>
-        <p style="font-size:13px;color:var(--tx);flex:1;">Emergency fund covers <strong style="color:var(--rd);">1.8 months</strong> — target is 6.</p>
-        <i class="ti ti-chevron-right" style="color:var(--mu);font-size:16px;"></i>
+
+    <!-- SNAPSHOT -->
+    <div class="sec">Aapki financial position</div>
+    <div class="snap-row">
+      <div class="snap-item dark">
+        <div class="sn-val" style="color:var(--gold);">0%</div>
+        <div class="sn-label" style="color:rgba(255,255,255,0.55);">Capital Gains Tax in Singapore</div>
+        <div class="sn-trend" style="color:#4ADE80;">Most NRIs don't use this</div>
       </div>
-      <div style="background:var(--blb);border:1px solid #BFDBFE;border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center;cursor:pointer;" onclick="go('nri')">
-        <i class="ti ti-heart-rate-monitor" style="color:var(--bl);font-size:18px;flex-shrink:0;"></i>
-        <p style="font-size:13px;color:var(--tx);flex:1;">You may be <strong style="color:var(--bl);">underinsured</strong> in Singapore.</p>
-        <i class="ti ti-chevron-right" style="color:var(--mu);font-size:16px;"></i>
+      <div class="snap-item">
+        <div class="sn-val" style="color:var(--rd);">-40%</div>
+        <div class="sn-label">INR vs SGD loss since 2015</div>
+        <div class="sn-trend" style="color:var(--rd);">Your India savings eroding</div>
       </div>
     </div>
-    <div class="sl" style="margin-top:10px;">Quick actions</div>
-    <div class="qa">
-      <button class="qb" onclick="go('goals')"><i class="ti ti-target"></i><span>Goals</span></button>
-      <button class="qb" onclick="go('invest')"><i class="ti ti-trending-up"></i><span>Invest</span></button>
-      <button class="qb" onclick="go('nri')"><i class="ti ti-map-pin"></i><span>NRI Guide</span></button>
-      <button class="qb" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle"></i><span>Ask Sarathy</span></button>
+    <div class="snap-row" style="margin-top:-4px;">
+      <div class="snap-item">
+        <div class="sn-val" style="color:var(--s);">6.8%</div>
+        <div class="sn-label">SBI FD rate — but real SGD return</div>
+        <div class="sn-trend" style="color:var(--gold);">≈ 2.8% after depreciation</div>
+      </div>
+      <div class="snap-item">
+        <div class="sn-val" style="color:var(--gn);">₹72K+</div>
+        <div class="sn-label">Saved per year switching to Wise</div>
+        <div class="sn-trend" style="color:var(--gn);">On ₹50,000/month remittance</div>
+      </div>
+    </div>
+
+    <!-- RUPEE REALITY -->
+    <div class="sec">The truth your bank never told you</div>
+    <div class="rupee-alert">
+      <div class="ra-top">
+        <div class="ra-badge">⚠️ Rupee Reality</div>
+        <div class="ra-title">₹1 lakh in 2015 = SGD $2,040. Same ₹1 lakh today = SGD $1,210.</div>
+        <div class="ra-desc">That 40% loss happened silently while your SBI FD earned 6–7%. Your bank never mentioned this.</div>
+      </div>
+      <div class="ra-chart">
+        <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:8px;">SGD received for ₹1,00,000 each year</div>
+        <div class="ra-year-row"><div class="ra-yr">2015</div><div class="ra-bar-wrap"><div class="ra-bar" style="width:100%;background:var(--gn);">₹1L = </div></div><div class="ra-v" style="color:var(--gn);">SGD $2,040</div></div>
+        <div class="ra-year-row"><div class="ra-yr">2018</div><div class="ra-bar-wrap"><div class="ra-bar" style="width:82%;background:var(--gold);"></div></div><div class="ra-v" style="color:var(--gold);">SGD $1,890</div></div>
+        <div class="ra-year-row"><div class="ra-yr">2021</div><div class="ra-bar-wrap"><div class="ra-bar" style="width:68%;background:var(--s);"></div></div><div class="ra-v" style="color:var(--s);">SGD $1,640</div></div>
+        <div class="ra-year-row"><div class="ra-yr">2025</div><div class="ra-bar-wrap"><div class="ra-bar" style="width:52%;background:var(--rd);"></div></div><div class="ra-v" style="color:var(--rd);">SGD $1,210</div></div>
+      </div>
+      <div class="ra-insight">
+        <span style="font-size:18px;flex-shrink:0;">📉</span>
+        <p><strong>SBI FD at 6.8% sounds good. But after 4% annual INR depreciation, your real SGD return is only 2.8%.</strong> Singapore index funds average 8–12% — with 0% capital gains tax. Sarathy can show you what to do.</p>
+      </div>
+    </div>
+
+    <!-- GOALS -->
+    <div class="sec">Aapke sapne · Your goals</div>
+    <div class="goal-card">
+      <div class="gc-top"><div><div class="gc-name">🏠 Parents' house renovation</div><div class="gc-sub">Delhi · Family promise · Target: SGD $25,000</div></div><div class="gc-pct">58%</div></div>
+      <div class="gc-bar"><div class="gc-fill" style="width:58%"></div></div>
+      <div class="gc-nums"><span>SGD <strong>$14,500</strong> saved</span><span>$10,500 remaining</span></div>
+    </div>
+    <div class="goal-card">
+      <div class="gc-top"><div><div class="gc-name">🎓 Children's education fund</div><div class="gc-sub">10-year horizon · SG + abroad options</div></div><div class="gc-pct">22%</div></div>
+      <div class="gc-bar"><div class="gc-fill" style="width:22%"></div></div>
+      <div class="gc-nums"><span>SGD <strong>$44,000</strong> saved</span><span>of SGD $2,00,000</span></div>
+    </div>
+
+    <!-- SARATHY TIP -->
+    <div class="s-tip">
+      <div class="s-tip-av">S</div>
+      <div class="s-tip-content">
+        <p>Sarathy ki honest salah — aaj ke liye ek step</p>
+        <span>Invest screen mein jaiye — liquid, short-term aur long-term options sab hain. Singapore ka 0% capital gains tax aapke liye banaa hai. Iske baare mein baat karte hain.</span>
+      </div>
+    </div>
+
+    <!-- REMITTANCE QUICK -->
+    <div class="sec">Ghar paisa bhejne ka sahi tarika</div>
+    <div class="rem-card">
+      <div class="rem-top">
+        <div class="rem-title">Har transfer pe <em>₹3,000–8,000</em> waste ho raha hai</div>
+        <div class="rem-sub">SGD $1,000 bhejne pe — aaj ke rate pe</div>
+      </div>
+      <div class="rem-row">
+        <div style="flex:1"><div class="rem-name">Wise App <span class="bp">Best</span></div><div class="rem-detail">Mid-market rate · Same day</div></div>
+        <div class="rem-val" style="color:var(--gn);">₹62,480</div>
+      </div>
+      <div class="rem-row">
+        <div style="flex:1"><div class="rem-name">Instarem</div><div class="rem-detail">Good rates · 1-2 days</div></div>
+        <div class="rem-val" style="color:var(--gold);">₹61,900</div>
+      </div>
+      <div class="rem-row">
+        <div style="flex:1"><div class="rem-name">DBS Bank transfer</div><div class="rem-detail">Convenient but expensive</div></div>
+        <div class="rem-val" style="color:var(--rd);">₹59,200</div>
+      </div>
+    </div>
+    <div style="margin:0 16px 20px;">
+      <button onclick="go('s-invest')" style="width:100%;background:var(--s);color:white;border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:7px;">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Investment options dekhein
+      </button>
     </div>
   </div>
-  <nav class="nb">
-    <button class="ni on" onclick="go('home')"><i class="ti ti-home"></i><span>Home</span></button>
-    <button class="ni" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle"></i><span>Sarathy</span></button>
-    <button class="ni" onclick="go('goals')"><i class="ti ti-target"></i><span>Goals</span></button>
-    <button class="ni" onclick="go('nri')"><i class="ti ti-map-pin"></i><span>NRI</span></button>
-    <button class="ni" onclick="go('invest')"><i class="ti ti-trending-up"></i><span>Invest</span></button>
+  <nav class="nav">
+    <button class="nb on" onclick="go('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Ghar</span></button>
+    <button class="nb" onclick="openChat('morning')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Sarathy</span></button>
+    <button class="nb" onclick="go('s-invest')"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Nivesh</span></button>
+    <button class="nb" onclick="go('s-story')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span>Kahani</span></button>
   </nav>
-  <div class="po" id="pause-overlay">
-    <div class="pm">
-      <p class="pl">Pause Button</p><h2>Before you buy this—</h2>
-      <div class="pa">SGD $89.90</div><div class="pi">ASOS — Summer dress haul</div>
-      <div class="ps"><p class="pf">Sarathy says</p><p>You checked in feeling stressed this morning. I've noticed you spend about $180 more on shopping in tough weeks. Still want to go ahead? That's completely okay — I just wanted you to know.</p></div>
-      <div class="pb2"><button class="by" onclick="hidePause()">Yes, buy it</button><button class="bn2" onclick="hidePause()">Actually, no</button></div>
-    </div>
-  </div>
 </div>
 
-<!-- CHAT -->
-<div class="screen" id="screen-chat">
-  <div class="sb"><span class="t">9:41</span><div class="ic"><i class="ti ti-wifi"></i><i class="ti ti-battery"></i></div></div>
-  <div class="chh"><div class="ca">S</div><div class="ci"><p>Sarathy</p><span><span class="do"></span>Always here for you</span></div></div>
-  <div class="cm" id="chat-messages">
-    <div class="msg ag">
-      <div class="av">S</div>
-      <div>
-        <div class="bu">Hey — I'm Sarathy. Think of me as your financial companion. Not a bank. Not an advisor. Just someone who genuinely gets it and is always on your side.<br><br>When you think about money right now — what's the first feeling that comes up?</div>
-        <div class="cs">
-          <button class="cb" onclick="pick(this,'Stressed or overwhelmed')">Stressed or overwhelmed</button>
-          <button class="cb" onclick="pick(this,'Confused — I don\'t know where I stand')">Confused — don't know where I stand</button>
-          <button class="cb" onclick="pick(this,'Okay but could be doing better')">Okay but could be better</button>
-          <button class="cb" onclick="pick(this,'Actually pretty good')">Actually pretty good</button>
+<!-- ═══════════ CHAT ═══════════ -->
+<div class="screen" id="s-chat">
+  <div class="sb"><span class="st">9:41 AM</span><span class="si">Singapore 🇸🇬</span></div>
+  <div class="chat-hdr">
+    <div class="c-av">S</div>
+    <div class="c-info"><p>Sarathy</p><span><span class="odot"></span>Hamesha aapke saath</span></div>
+    <button class="c-back" onclick="go('s-home')">← Wapas</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs"></div>
+  <div class="c-inp-row">
+    <textarea class="c-ta" id="chat-inp" placeholder="Sarathy se baat karein…" rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send()}"
+      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,80)+'px'"></textarea>
+    <button class="c-send" id="send-btn" onclick="send()">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+  <nav class="nav">
+    <button class="nb" onclick="go('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Ghar</span></button>
+    <button class="nb on" onclick="openChat('morning')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Sarathy</span></button>
+    <button class="nb" onclick="go('s-invest')"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Nivesh</span></button>
+    <button class="nb" onclick="go('s-story')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span>Kahani</span></button>
+  </nav>
+</div>
+
+<!-- ═══════════ INVEST / NIVESH ═══════════ -->
+<div class="screen" id="s-invest">
+  <div class="sb"><span class="st">9:41 AM</span><span class="si">Singapore 🇸🇬</span></div>
+  <div class="invest-top">
+    <div class="it-label">Nivesh · Investment Guide for NRIs</div>
+    <div class="it-title">Where to put your money<br/><em>in Singapore</em></div>
+    <div class="it-sub">Liquid options · Short-term · Long-term · Education · PR schemes · Platforms</div>
+  </div>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar" id="tab-bar">
+    <button class="tab-btn on" onclick="switchTab('liquid')">💧 Liquid</button>
+    <button class="tab-btn" onclick="switchTab('short')">⚡ Short-term</button>
+    <button class="tab-btn" onclick="switchTab('long')">📈 Long-term</button>
+    <button class="tab-btn" onclick="switchTab('edu')">🎓 Education</button>
+    <button class="tab-btn" onclick="switchTab('pr')">🏆 PR Schemes</button>
+    <button class="tab-btn" onclick="switchTab('platforms')">🏦 Platforms</button>
+  </div>
+
+  <div class="scroll">
+
+    <!-- LIQUID TAB -->
+    <div class="inv-section active" id="tab-liquid">
+      <div style="padding:4px 16px 8px;font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;">Zero lock-in. Withdraw anytime. These are for your emergency buffer and short-term cash flow.</div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge liquid">💧 Fully Liquid · No lock-in</div>
+          <div class="inv-title">Singapore Savings Bonds (SSB)</div>
+          <div class="inv-desc">Government-backed. Redeem any month with no penalty. Currently paying 3.0–3.3% p.a. — better than any savings account. Perfect for your emergency fund that also earns.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">3.0–3.3%</div><div class="inv-stat-label">p.a. return</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$500</div><div class="inv-stat-label">Min. investment</div></div>
+          <div class="inv-stat"><div class="inv-stat-val green">0%</div><div class="inv-stat-label">Tax on interest</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('ssb')">How to buy</button>
+          <button class="inv-btn-sarathy" onclick="openChat('ssb')">Ask Sarathy</button>
+        </div>
+      </div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge liquid">💧 Liquid · T+1 withdrawal</div>
+          <div class="inv-title">Money Market Funds (MMF)</div>
+          <div class="inv-desc">Available on FSMOne, Endowus, and StashAway. Earn 3.5–3.8% p.a. on idle cash. No minimum holding period. Withdraw within 1 business day. Ideal for large amounts sitting in current account.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">3.5–3.8%</div><div class="inv-stat-label">p.a. annualised</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$1,000</div><div class="inv-stat-label">Min. amount</div></div>
+          <div class="inv-stat"><div class="inv-stat-val gold">T+1</div><div class="inv-stat-label">Withdrawal</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('mmf')">Compare platforms</button>
+          <button class="inv-btn-sarathy" onclick="openChat('mmf')">Ask Sarathy</button>
+        </div>
+      </div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge liquid">💧 Liquid · Same day</div>
+          <div class="inv-title">DBS/OCBC High-Yield Savings Accounts</div>
+          <div class="inv-desc">DBS Multiplier and OCBC 360 pay up to 4.65% if you credit salary + transact. Fully liquid. Use as your primary account — money earns while you use it daily.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">Up to 4.65%</div><div class="inv-stat-label">p.a. with conditions</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$0</div><div class="inv-stat-label">Min. balance</div></div>
+          <div class="inv-stat"><div class="inv-stat-val green">Instant</div><div class="inv-stat-label">Withdrawal</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('hysavings')">Which account suits me?</button>
+          <button class="inv-btn-sarathy" onclick="openChat('hysavings')">Ask Sarathy</button>
+        </div>
+      </div>
+      <div style="height:16px"></div>
+    </div>
+
+    <!-- SHORT-TERM TAB -->
+    <div class="inv-section" id="tab-short">
+      <div style="padding:4px 16px 8px;font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;">6 months to 3 years. Better returns than savings. Moderate risk. Good for goals like home renovation.</div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge moderate">⚡ 6–12 months</div>
+          <div class="inv-title">Singapore T-Bills (Treasury Bills)</div>
+          <div class="inv-desc">Government-backed 6-month bills. Currently yielding 3.5–3.7% p.a. Risk-free. Apply via DBS/OCBC ATM or internet banking. Minimum SGD $1,000. No early withdrawal — but maturity is only 6 months.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">3.5–3.7%</div><div class="inv-stat-label">Current yield</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$1,000</div><div class="inv-stat-label">Minimum</div></div>
+          <div class="inv-stat"><div class="inv-stat-val gold">6 months</div><div class="inv-stat-label">Maturity</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('tbills')">How to apply</button>
+          <button class="inv-btn-sarathy" onclick="openChat('tbills')">Ask Sarathy</button>
+        </div>
+      </div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge moderate">⚡ 1–2 years</div>
+          <div class="inv-title">Fixed Deposits — Singapore Banks</div>
+          <div class="inv-desc">DBS, OCBC, UOB currently offering 2.8–3.2% for 1-year FDs. Higher than your India FD in real terms because no currency risk. Break penalty applies but tenure is short. Good for medium-term parking.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">2.8–3.2%</div><div class="inv-stat-label">p.a. (no FX risk)</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$1,000</div><div class="inv-stat-label">Minimum</div></div>
+          <div class="inv-stat"><div class="inv-stat-val gold">1–2 yrs</div><div class="inv-stat-label">Lock-in</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('sgfd')">Compare rates now</button>
+          <button class="inv-btn-sarathy" onclick="openChat('sgfd')">Ask Sarathy</button>
+        </div>
+      </div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge moderate">⚡ 1–3 years · Low risk</div>
+          <div class="inv-title">Bond Funds / Income Funds (FSMOne)</div>
+          <div class="inv-desc">Short-duration bond funds on FSMOne Funds Supermarket. 4–5% p.a. historically. Lower volatility than equities. Can redeem anytime — T+3 to T+5 settlement. Good bridge between savings and long-term investing.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">4–5%</div><div class="inv-stat-label">Historical p.a.</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$100</div><div class="inv-stat-label">Min. investment</div></div>
+          <div class="inv-stat"><div class="inv-stat-val gold">T+3 to 5</div><div class="inv-stat-label">Redemption</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('bondfunds')">Show me options</button>
+          <button class="inv-btn-sarathy" onclick="openChat('bondfunds')">Ask Sarathy</button>
+        </div>
+      </div>
+      <div style="height:16px"></div>
+    </div>
+
+    <!-- LONG-TERM TAB -->
+    <div class="inv-section" id="tab-long">
+      <div style="padding:4px 16px 8px;font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;">3+ years. Higher returns. Build real wealth in Singapore using 0% capital gains tax. This is your unfair advantage.</div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge growth">📈 3–10 years · 0% tax on gains</div>
+          <div class="inv-title">STI ETF / S&P 500 ETF (SGX-listed)</div>
+          <div class="inv-desc">ES3 (Straits Times Index ETF) and CSPX (S&P 500) listed on SGX. Historical returns 8–12% p.a. Zero capital gains tax on profits. You can sell anytime. Start with SGD $200/month via Regular Savings Plan.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">8–12%</div><div class="inv-stat-label">Historical p.a.</div></div>
+          <div class="inv-stat"><div class="inv-stat-val green">0%</div><div class="inv-stat-label">Capital gains tax</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$100</div><div class="inv-stat-label">Min. RSP</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('etf')">How to start RSP</button>
+          <button class="inv-btn-sarathy" onclick="openChat('etf')">Ask Sarathy</button>
+        </div>
+      </div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge growth">📈 5–20 years · Retirement</div>
+          <div class="inv-title">SRS (Supplementary Retirement Scheme)</div>
+          <div class="inv-desc">NRIs can open SRS accounts. Contributions are tax-deductible up to SGD $35,700/year — saves you 7–22% income tax. Invest SRS funds in ETFs, unit trusts, or T-bills. Withdraw after statutory retirement age with 50% tax concession.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">Up to 22%</div><div class="inv-stat-label">Income tax saved</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$35,700</div><div class="inv-stat-label">Max/year</div></div>
+          <div class="inv-stat"><div class="inv-stat-val gold">Long-term</div><div class="inv-stat-label">Best for 10yr+</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('srs')">Am I eligible?</button>
+          <button class="inv-btn-sarathy" onclick="openChat('srs')">Ask Sarathy</button>
+        </div>
+      </div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge growth">📈 5+ years · Robo-advisor</div>
+          <div class="inv-title">Endowus / StashAway (Robo-advisors)</div>
+          <div class="inv-desc">Automated globally diversified portfolios. Endowus is the only platform that invests your CPF savings too. StashAway uses economic risk framework. Both charge 0.2–0.8% p.a. No performance fees. Start from SGD $1.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">6–10%</div><div class="inv-stat-label">Historical p.a.</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">$1</div><div class="inv-stat-label">Minimum</div></div>
+          <div class="inv-stat"><div class="inv-stat-val gold">0.2–0.8%</div><div class="inv-stat-label">Annual fee</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('robo')">Which robo is right for me?</button>
+          <button class="inv-btn-sarathy" onclick="openChat('robo')">Ask Sarathy</button>
+        </div>
+      </div>
+
+      <div class="inv-card" style="margin-bottom:16px;">
+        <div class="inv-card-top">
+          <div class="inv-badge safe">🇮🇳 India-linked · NRE only</div>
+          <div class="inv-title">NRE Fixed Deposit (India) — the right way</div>
+          <div class="inv-desc">If you want India exposure, do it properly. NRE FD at 6.8–7.1% has interest that is 100% tax-free in India — unlike regular savings. Fully repatriable. The currency risk remains — but at least you're not paying unnecessary tax on top of it.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val gold">6.8–7.1%</div><div class="inv-stat-label">NRE FD rate</div></div>
+          <div class="inv-stat"><div class="inv-stat-val green">0%</div><div class="inv-stat-label">India tax on interest</div></div>
+          <div class="inv-stat"><div class="inv-stat-val orange">-4%/yr</div><div class="inv-stat-label">Currency risk</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('nre')">Open NRE account</button>
+          <button class="inv-btn-sarathy" onclick="openChat('nre')">Ask Sarathy</button>
         </div>
       </div>
     </div>
-  </div>
-  <div class="cib">
-    <textarea class="ci2" id="chat-input" placeholder="Message Sarathy..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send();}" oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,80)+'px'"></textarea>
-    <button class="sb4" id="send-btn" onclick="send()"><i class="ti ti-send"></i></button>
-  </div>
-  <nav class="nb">
-    <button class="ni" onclick="go('home')"><i class="ti ti-home"></i><span>Home</span></button>
-    <button class="ni on" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle"></i><span>Sarathy</span></button>
-    <button class="ni" onclick="go('goals')"><i class="ti ti-target"></i><span>Goals</span></button>
-    <button class="ni" onclick="go('nri')"><i class="ti ti-map-pin"></i><span>NRI</span></button>
-    <button class="ni" onclick="go('invest')"><i class="ti ti-trending-up"></i><span>Invest</span></button>
-  </nav>
-</div>
 
-<!-- GOALS -->
-<div class="screen" id="screen-goals">
-  <div class="sb"><span class="t">9:41</span><div class="ic"><i class="ti ti-wifi"></i><i class="ti ti-battery"></i></div></div>
-  <div class="sh"><h1>Goals & Safety Net</h1><p>Dreams, emergencies, and debt — all in one place</p></div>
-  <div class="sc">
-    <div class="sl">Emergency Fund</div>
-    <div style="background:linear-gradient(135deg,var(--gnb) 0%,#DCFCE7 100%);border:1px solid #BBF7D0;border-radius:16px;padding:16px;margin:0 16px 12px;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-        <div>
-          <p style="font-size:12px;color:#15803D;font-weight:500;">Your safety net</p>
-          <p style="font-family:'DM Serif Display',serif;font-size:28px;color:var(--gn);margin:4px 0;">SGD $3,240</p>
-          <p style="font-size:11px;color:#15803D;"><span id="ef-months">2.2</span> months covered · target: 6 months</p>
+    <!-- EDUCATION TAB -->
+    <div class="inv-section" id="tab-edu">
+      <div style="padding:4px 16px 8px;font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;">Bacchon ki padhai ke liye. Singapore, India, aur global options — Sarathy compares all three.</div>
+
+      <div class="edu-card">
+        <div class="edu-label">Aapka current education fund</div>
+        <div class="edu-title">Bacchon ka future — <em>10-year plan</em></div>
+        <div class="edu-grid">
+          <div class="edu-item"><div class="edu-val">SGD $44K</div><div class="edu-lbl">Saved so far</div></div>
+          <div class="edu-item"><div class="edu-val">SGD $200K</div><div class="edu-lbl">Target amount</div></div>
+          <div class="edu-item"><div class="edu-val">22%</div><div class="edu-lbl">Funded</div></div>
+          <div class="edu-item"><div class="edu-val">10 yrs</div><div class="edu-lbl">Time horizon</div></div>
         </div>
-        <div style="background:var(--gnb);border:1px solid #BBF7D0;border-radius:10px;padding:8px 12px;text-align:center;">
-          <p style="font-size:18px;font-weight:700;color:var(--gn);">37%</p>
-          <p style="font-size:10px;color:#15803D;">of goal</p>
+        <div class="edu-bar"><div class="edu-fill" style="width:22%"></div></div>
+        <div class="edu-nums"><span>SGD $44,000</span><span>Need SGD $156,000 more</span></div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:8px;line-height:1.5;">Investing SGD $800/month at 8% return = SGD $1,44,000 in 10 years. Currently short by SGD $12,000. Sarathy can create a plan.</div>
+        <button class="edu-btn" onclick="openChat('edu_plan')">
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Sarathy, create my education plan
+        </button>
+      </div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge growth">🎓 Best for education savings</div>
+          <div class="inv-title">SUTD/NUS/NTU Tuition Fee Loan (if SG PR)</div>
+          <div class="inv-desc">If your child gets SG PR, local university fees are SGD $9,000–14,000/year — vs SGD $35,000+ for international students. Getting PR before they university age could save SGD $80,000–100,000 over 4 years.</div>
         </div>
-      </div>
-      <div style="height:6px;background:#BBF7D0;border-radius:3px;margin:12px 0 6px;overflow:hidden;"><div style="height:100%;width:37%;background:var(--gn);border-radius:3px;"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:#15803D;margin-bottom:10px;"><span>Current: $3,240</span><span>Target: SGD $<span id="ef-need">8,700</span></span></div>
-      <div style="background:rgba(255,255,255,0.6);border-radius:10px;padding:10px;">
-        <p style="font-size:12px;color:#15803D;font-weight:500;margin-bottom:4px;">Your monthly expenses: SGD $<span id="ef-exp">1,450</span></p>
-        <input type="range" style="width:100%;accent-color:var(--gn);display:block;margin:6px 0;" id="ef-slider" min="500" max="3000" value="1450" step="50" oninput="updateEF(this.value)">
-        <p style="font-size:11px;color:#15803D;">Drag to adjust → need 6x = SGD $<span id="ef-need2">8,700</span></p>
-      </div>
-      <button onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')" style="margin-top:12px;background:var(--gn);color:white;border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ti ti-plus"></i> Add to emergency fund</button>
-    </div>
-    <div class="sl">Debt Pulse</div>
-    <div style="background:linear-gradient(135deg,var(--rdb) 0%,#FFE4E6 100%);border:1px solid #FECDD3;border-radius:16px;padding:16px;margin:0 16px 12px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <p style="font-size:13px;font-weight:600;color:var(--dk);">Your current debt</p>
-        <div style="background:var(--rd);color:white;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;">SGD $4,200 total</div>
-      </div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:0.5px solid #FECDD3;font-size:13px;"><span style="color:var(--dk);">Student credit card</span><span style="color:var(--rd);font-weight:600;">$1,800</span></div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:0.5px solid #FECDD3;font-size:13px;"><span style="color:var(--dk);">Phone installment plan</span><span style="color:var(--rd);font-weight:600;">$1,200</span></div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;"><span style="color:var(--dk);">Study loan (interest-free)</span><span style="color:var(--rd);font-weight:600;">$1,200</span></div>
-      <p style="font-size:12px;color:#9F1239;margin-top:10px;line-height:1.5;">Sarathy's tip: Pay the credit card first — it's the only one charging you interest. Even $50 extra per month saves you $180 this year.</p>
-      <button onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')" style="margin-top:10px;background:white;color:var(--rd);border:1px solid #FECDD3;border-radius:10px;padding:9px 14px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;"><i class="ti ti-message-circle"></i> Talk to Sarathy about debt</button>
-    </div>
-    <div class="sl">Your Goals</div>
-    <div class="gc">
-      <div class="gt"><div><div class="gn2">✈️ Dream Goa Trip</div><div class="gct">Travel & Adventure</div></div><div class="gp">64%</div></div>
-      <div class="gam"><span>SGD <strong>$1,280</strong> saved</span><span>of SGD $2,000</span></div>
-      <div class="gb"><div class="gbf" style="width:64%"></div></div>
-      <button class="ga"><i class="ti ti-plus"></i> Add SGD $50</button>
-    </div>
-    <div class="gc">
-      <div class="gt"><div><div class="gn2">💻 New MacBook</div><div class="gct">Gadgets & Tech</div></div><div class="gp">25%</div></div>
-      <div class="gam"><span>SGD <strong>$505</strong> saved</span><span>of SGD $2,000</span></div>
-      <div class="gb"><div class="gbf" style="width:25%"></div></div>
-      <button class="ga"><i class="ti ti-plus"></i> Add SGD $50</button>
-    </div>
-    <button class="ngb"><i class="ti ti-plus"></i> Create new goal</button>
-  </div>
-  <nav class="nb">
-    <button class="ni" onclick="go('home')"><i class="ti ti-home"></i><span>Home</span></button>
-    <button class="ni" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle"></i><span>Sarathy</span></button>
-    <button class="ni on" onclick="go('goals')"><i class="ti ti-target"></i><span>Goals</span></button>
-    <button class="ni" onclick="go('nri')"><i class="ti ti-map-pin"></i><span>NRI</span></button>
-    <button class="ni" onclick="go('invest')"><i class="ti ti-trending-up"></i><span>Invest</span></button>
-  </nav>
-</div>
-
-<!-- NRI -->
-<div class="screen" id="screen-nri">
-  <div class="sb"><span class="t">9:41</span><div class="ic"><i class="ti ti-wifi"></i><i class="ti ti-battery"></i></div></div>
-  <div class="sh"><h1>NRI Navigator</h1><p>Singapore's financial system, made simple for you</p></div>
-  <div class="sc">
-    <div class="ns">
-      <div class="nc"><div class="vl">0%</div><div class="lb2">Capital Gains Tax</div><div class="sv">Unique to Singapore ✓</div></div>
-      <div class="nc"><div class="vl">$8.05B</div><div class="lb2">NRI remittances/yr</div><div class="sv">Optimise yours →</div></div>
-    </div>
-    <div class="sl">Insurance Gap Check</div>
-    <div style="background:linear-gradient(135deg,var(--blb) 0%,#DBEAFE 100%);border:1px solid #BFDBFE;border-radius:16px;padding:16px;margin:0 16px 12px;">
-      <p style="font-size:13px;color:#1D4ED8;font-weight:500;margin-bottom:10px;">72% of students & NRIs in Singapore are underinsured. Are you?</p>
-      <div class="in-row"><span class="in-label">Health insurance (Singapore)</span><span class="in-badge no">Not confirmed</span></div>
-      <div class="in-row"><span class="in-label">MediShield Life</span><span class="in-badge na">EP holders: N/A</span></div>
-      <div class="in-row"><span class="in-label">Life insurance</span><span class="in-badge no">Not set up</span></div>
-      <div class="in-row"><span class="in-label">Home/contents insurance</span><span class="in-badge ok">Active</span></div>
-      <button onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')" style="margin-top:12px;background:var(--bl);color:white;border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ti ti-message-circle"></i> Ask Sarathy about insurance options</button>
-    </div>
-    <div class="sl">Setup checklist</div>
-    <div class="card" style="padding:0;overflow:hidden;">
-      <div class="ns2"><div class="sn dn"><i class="ti ti-check" style="font-size:13px;"></i></div><div><div class="st">Open a local bank account</div><div class="sd">DBS, OCBC, or UOB — done in 15 mins with your passport and student pass.</div></div></div>
-      <div class="ns2"><div class="sn dn"><i class="ti ti-check" style="font-size:13px;"></i></div><div><div class="st">Set up PayNow</div><div class="sd">Link your NRIC or phone for instant free transfers.</div></div></div>
-      <div class="ns2"><div class="sn ac">3</div><div><div class="st">Open NRE account back home</div><div class="sd">Send Singapore → India tax-free. Sarathy walks you through it.</div><button class="sc2" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle" style="font-size:13px;"></i> Ask Sarathy how</button></div></div>
-      <div class="ns2"><div class="sn td2">4</div><div><div class="st">Understand 0% capital gains</div><div class="sd">Singapore doesn't tax investment profits. Here's how to use this legally.</div><button class="sc2" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle" style="font-size:13px;"></i> Learn with Sarathy</button></div></div>
-      <div class="ns2"><div class="sn td2">5</div><div><div class="st">Optimise your remittances</div><div class="sd">Wise and Instarem save most NRIs $80–$200/month vs bank transfers.</div><button class="sc2" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle" style="font-size:13px;"></i> Compare rates</button></div></div>
-    </div>
-    <div class="sl" style="margin-top:4px;">Share Sarathy</div>
-    <div class="share-card">
-      <h3>Know someone who just arrived?</h3>
-      <p>Send them this. Sarathy helped you figure out Singapore's financial system — now pass it on to a friend figuring it out alone.</p>
-      <button class="share-btn"><i class="ti ti-share"></i> Share my Sarathy referral</button>
-    </div>
-    <div style="height:16px;"></div>
-  </div>
-  <nav class="nb">
-    <button class="ni" onclick="go('home')"><i class="ti ti-home"></i><span>Home</span></button>
-    <button class="ni" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle"></i><span>Sarathy</span></button>
-    <button class="ni" onclick="go('goals')"><i class="ti ti-target"></i><span>Goals</span></button>
-    <button class="ni on" onclick="go('nri')"><i class="ti ti-map-pin"></i><span>NRI</span></button>
-    <button class="ni" onclick="go('invest')"><i class="ti ti-trending-up"></i><span>Invest</span></button>
-  </nav>
-</div>
-
-<!-- INVEST -->
-<div class="screen" id="screen-invest">
-  <div class="sb"><span class="t">9:41</span><div class="ic"><i class="ti ti-wifi"></i><i class="ti ti-battery"></i></div></div>
-  <div class="sh"><h1>Start Investing</h1><p>Simple first steps — no jargon, no overwhelm</p></div>
-  <div class="sc">
-    <div class="sl">SIP Calculator</div>
-    <div class="sip-card">
-      <h3>What does starting a SIP actually mean?</h3>
-      <p>A SIP means investing a small fixed amount every month — like a savings habit, but your money grows in the market. Most experts recommend this as the single best starting point for Gen Z.</p>
-      <div class="sip-calc">
-        <label>Monthly amount: SGD $<span id="sip-amt">100</span></label>
-        <input type="range" id="sip-slider" min="50" max="500" value="100" step="50" oninput="updateSIP()">
-        <label>Years investing: <span id="sip-yrs">10</span></label>
-        <input type="range" id="sip-yrs-slider" min="3" max="30" value="10" step="1" oninput="updateSIP()">
-        <div class="sip-result">
-          <div class="lbl">Your money grows to approximately</div>
-          <div class="big" id="sip-result">SGD $17,384</div>
-          <div class="lbl" style="margin-top:4px;">at 8% annual returns — index fund historical average</div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">SGD $9–14K</div><div class="inv-stat-label">PR annual fees</div></div>
+          <div class="inv-stat"><div class="inv-stat-val orange">SGD $35K+</div><div class="inv-stat-label">Intl. student fees</div></div>
+          <div class="inv-stat"><div class="inv-stat-val green">SGD $80–100K</div><div class="inv-stat-label">Total savings</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('pr_edu')">PR eligibility check</button>
+          <button class="inv-btn-sarathy" onclick="openChat('pr_edu')">Ask Sarathy</button>
         </div>
       </div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge moderate">🇮🇳 India option</div>
+          <div class="inv-title">Sukanya Samriddhi / PPF (India) — if planning return</div>
+          <div class="inv-desc">If you plan to return to India before children's college age, Sukanya Samriddhi (for daughters) offers 8.2% p.a. — one of India's highest guaranteed returns. Tax-free under Section 80C. 21-year scheme with partial withdrawal at 18.</div>
+        </div>
+        <div class="inv-stats">
+          <div class="inv-stat"><div class="inv-stat-val green">8.2%</div><div class="inv-stat-label">p.a. guaranteed</div></div>
+          <div class="inv-stat"><div class="inv-stat-val blue">₹250</div><div class="inv-stat-label">Min. per year</div></div>
+          <div class="inv-stat"><div class="inv-stat-val gold">80C benefit</div><div class="inv-stat-label">Tax deduction</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('sukanya')">Is this right for me?</button>
+          <button class="inv-btn-sarathy" onclick="openChat('sukanya')">Ask Sarathy</button>
+        </div>
+      </div>
+      <div style="height:16px"></div>
     </div>
-    <div class="sl">Where to start (Sarathy recommends)</div>
-    <div class="card" style="padding:4px 0;overflow:hidden;">
-      <div class="cmp-row">
-        <div class="cmp-ic" style="background:#EFF6FF;"><i class="ti ti-building-bank" style="color:#2563EB;"></i></div>
-        <div style="flex:1;"><div class="cmp-nm">Index Funds (Nifty 50 / S&P 500)</div><div class="cmp-tx">Low cost, diversified. Recommended by experts for Gen Z beginners. Only 7% of Gen Z owns them — most who should.</div></div>
-        <div style="text-align:right;flex-shrink:0;"><div class="cmp-pct">~12%</div><div class="cmp-lb">avg/yr</div></div>
+
+    <!-- PR SCHEMES TAB -->
+    <div class="inv-section" id="tab-pr">
+      <div style="padding:4px 16px 8px;font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;">Singapore PR status changes your financial picture significantly. Here is everything you need to know.</div>
+
+      <div class="pr-card">
+        <div class="pr-top">
+          <div class="pr-title">PR Status — what it actually unlocks financially</div>
+          <div class="pr-sub">Most NRIs underestimate how much PR changes their financial options</div>
+        </div>
+        <div class="pr-item">
+          <div class="pr-icon" style="background:var(--gnb);">🏠</div>
+          <div class="pr-info">
+            <div class="pr-name">HDB Resale Purchase</div>
+            <div class="pr-desc">As PR you can buy HDB resale flats — Singapore's most affordable housing. Average SGD $600–700K vs SGD $1.5M+ private condos. Massive wealth-building opportunity.</div>
+          </div>
+          <div class="pr-tag open">Available</div>
+        </div>
+        <div class="pr-item">
+          <div class="pr-icon" style="background:var(--blb);">💰</div>
+          <div class="pr-info">
+            <div class="pr-name">CPF Contributions</div>
+            <div class="pr-desc">PR status triggers CPF contributions — employer adds 17% of salary. CPF OA earns 2.5–3.5% guaranteed and can be used for housing. Additional SGD $12,000–25,000/year in forced savings.</div>
+          </div>
+          <div class="pr-tag open">Activated</div>
+        </div>
+        <div class="pr-item">
+          <div class="pr-icon" style="background:var(--gnb);">🎓</div>
+          <div class="pr-info">
+            <div class="pr-name">Children's University Fees</div>
+            <div class="pr-desc">PR children pay local student rates at NUS/NTU/SMU — SGD $9–14K/year vs SGD $35K+ for international students. Save SGD $80–100K over a 4-year degree.</div>
+          </div>
+          <div class="pr-tag open">Saves lakhs</div>
+        </div>
+        <div class="pr-item">
+          <div class="pr-icon" style="background:var(--goldsw);">📋</div>
+          <div class="pr-info">
+            <div class="pr-name">Medishield Life Coverage</div>
+            <div class="pr-desc">PRs are automatically covered under MediShield Life — Singapore's basic health insurance. Significantly cheaper than private insurance NRIs must currently buy.</div>
+          </div>
+          <div class="pr-tag check">Check eligibility</div>
+        </div>
+        <div class="pr-item">
+          <div class="pr-icon" style="background:var(--pub);">🌏</div>
+          <div class="pr-info">
+            <div class="pr-name">Global Investor Programme (GIP)</div>
+            <div class="pr-desc">For high-net-worth NRIs. Invest SGD $2.5M in a GIP-approved business or fund, get PR in 3–6 months. Alternative pathway if standard PR application is slow.</div>
+          </div>
+          <div class="pr-tag info">SGD $2.5M min</div>
+        </div>
+        <div style="padding:10px 14px;">
+          <button class="inv-btn-primary" style="width:100%;" onclick="openChat('pr_check')">Sarathy, am I eligible for PR?</button>
+        </div>
       </div>
-      <div class="cmp-row">
-        <div class="cmp-ic" style="background:#F0FDF4;"><i class="ti ti-chart-line" style="color:#16A34A;"></i></div>
-        <div style="flex:1;"><div class="cmp-nm">Balanced Advantage Fund SIP</div><div class="cmp-tx">Auto-balances stocks and bonds. Lower stress, consistent returns. Great for emotionally reactive investors.</div></div>
-        <div style="text-align:right;flex-shrink:0;"><div class="cmp-pct">~10%</div><div class="cmp-lb">avg/yr</div></div>
+
+      <div class="inv-card">
+        <div class="inv-card-top">
+          <div class="inv-badge pr">🏆 PR Application Tips</div>
+          <div class="inv-title">How to strengthen your PR application</div>
+          <div class="inv-desc">Approval rates improve significantly with certain factors. Sarathy can review your profile and tell you what strengthens your case.</div>
+        </div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:flex-start;"><div style="width:22px;height:22px;background:var(--s);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div style="font-size:13px;color:var(--ink2);line-height:1.5;"><strong>Employment Pass holder for 3+ years</strong> — the longer your stay, the stronger the application.</div></div>
+          <div style="display:flex;gap:8px;align-items:flex-start;"><div style="width:22px;height:22px;background:var(--s);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div style="font-size:13px;color:var(--ink2);line-height:1.5;"><strong>Salary above SGD $6,000/month</strong> and in a PMET role (Professional, Manager, Executive, Technician).</div></div>
+          <div style="display:flex;gap:8px;align-items:flex-start;"><div style="width:22px;height:22px;background:var(--s);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div style="font-size:13px;color:var(--ink2);line-height:1.5;"><strong>Community integration</strong> — volunteer work, Singapore-based professional memberships, children in local schools.</div></div>
+          <div style="display:flex;gap:8px;align-items:flex-start;"><div style="width:22px;height:22px;background:var(--s);color:white;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div style="font-size:13px;color:var(--ink2);line-height:1.5;"><strong>Invest in Singapore</strong> — local investments, property ownership, business ownership all strengthen your case.</div></div>
+        </div>
+        <div class="inv-action">
+          <button class="inv-btn-primary" onclick="openChat('pr_tips')">Review my PR profile</button>
+          <button class="inv-btn-sarathy" onclick="openChat('pr_tips')">Ask Sarathy</button>
+        </div>
       </div>
-      <div class="cmp-row">
-        <div class="cmp-ic" style="background:#FFFBEB;"><i class="ti ti-coins" style="color:#D97706;"></i></div>
-        <div style="flex:1;"><div class="cmp-nm">Sovereign Gold Bond (SGB)</div><div class="cmp-tx">Digital gold that also pays 2.5% interest. Gen Z's smarter approach to gold — not jewellery, but a real investment.</div></div>
-        <div style="text-align:right;flex-shrink:0;"><div class="cmp-pct">~8%</div><div class="cmp-lb">avg/yr</div></div>
+      <div style="height:16px"></div>
+    </div>
+
+    <!-- PLATFORMS TAB -->
+    <div class="inv-section" id="tab-platforms">
+      <div style="padding:4px 16px 8px;font-size:13px;color:var(--ink2);line-height:1.5;font-style:italic;">Singapore ke best investment platforms — NRIs ke liye. Sarathy has compared them so you don't have to.</div>
+
+      <div class="platform-card">
+        <div class="pc-top">
+          <div class="pc-logo" style="background:#EFF6FF;color:#1D4ED8;font-size:15px;">FSM</div>
+          <div class="pc-info">
+            <div class="pc-name">FSMOne Funds Supermarket</div>
+            <div class="pc-tagline">Singapore's largest fund platform — 1,000+ unit trusts, ETFs, bonds, T-bills, SSBs. All in one place.</div>
+          </div>
+          <div class="pc-tag" style="background:var(--gnb);color:var(--gn);">Best overall</div>
+        </div>
+        <div class="pc-features">
+          <div class="pc-feat">1,000+ funds</div>
+          <div class="pc-feat">T-bills & SSBs</div>
+          <div class="pc-feat">Regular Savings Plan</div>
+          <div class="pc-feat">No sales charge</div>
+          <div class="pc-feat">SGD $100 min</div>
+        </div>
+        <button class="pc-btn" onclick="openChat('fsmone')">Sarathy, guide me through FSMOne</button>
+      </div>
+
+      <div class="platform-card">
+        <div class="pc-top">
+          <div class="pc-logo" style="background:var(--gnb);color:var(--gn);font-size:13px;">ENDW</div>
+          <div class="pc-info">
+            <div class="pc-name">Endowus</div>
+            <div class="pc-tagline">Only platform investing your CPF & SRS savings. Evidence-based portfolios. 0.25% fee on CPF, 0.4% on cash.</div>
+          </div>
+          <div class="pc-tag" style="background:var(--gnb);color:var(--gn);">Best for CPF</div>
+        </div>
+        <div class="pc-features">
+          <div class="pc-feat">CPF investing</div>
+          <div class="pc-feat">SRS investing</div>
+          <div class="pc-feat">Dimensional funds</div>
+          <div class="pc-feat">SGD $1 min</div>
+        </div>
+        <button class="pc-btn" onclick="openChat('endowus')">Is Endowus right for me?</button>
+      </div>
+
+      <div class="platform-card">
+        <div class="pc-top">
+          <div class="pc-logo" style="background:#FBF3E4;color:var(--gold);font-size:13px;">SASH</div>
+          <div class="pc-info">
+            <div class="pc-name">StashAway</div>
+            <div class="pc-tagline">Robo-advisor using macroeconomic risk framework. Simple to use. Good for beginners. Up to SGD $50K tax-free under SRS.</div>
+          </div>
+          <div class="pc-tag" style="background:var(--goldsw);color:var(--gold);">Best beginner</div>
+        </div>
+        <div class="pc-features">
+          <div class="pc-feat">Auto-rebalancing</div>
+          <div class="pc-feat">SGD $1 min</div>
+          <div class="pc-feat">SRS compatible</div>
+          <div class="pc-feat">Simple app</div>
+        </div>
+        <button class="pc-btn" onclick="openChat('stashaway')">Start with StashAway</button>
+      </div>
+
+      <div class="platform-card">
+        <div class="pc-top">
+          <div class="pc-logo" style="background:var(--pub);color:var(--pu);font-size:13px;">SYFE</div>
+          <div class="pc-info">
+            <div class="pc-name">Syfe</div>
+            <div class="pc-tagline">REITs+, Core portfolios, and Cash+ (money market). Transparent pricing 0.35–0.65% p.a. Good for real estate exposure without buying property.</div>
+          </div>
+          <div class="pc-tag" style="background:var(--pub);color:var(--pu);">Best REITs</div>
+        </div>
+        <div class="pc-features">
+          <div class="pc-feat">REIT portfolios</div>
+          <div class="pc-feat">Cash+ 3.7%</div>
+          <div class="pc-feat">SRS compatible</div>
+          <div class="pc-feat">SGD $1 min</div>
+        </div>
+        <button class="pc-btn" onclick="openChat('syfe')">Compare Syfe options</button>
+      </div>
+
+      <div class="platform-card" style="margin-bottom:20px;">
+        <div class="pc-top">
+          <div class="pc-logo" style="background:var(--cream2);color:var(--ink);font-size:12px;">TIGER</div>
+          <div class="pc-info">
+            <div class="pc-name">Tiger Brokers / moomoo</div>
+            <div class="pc-tagline">For direct stock and ETF trading. US markets, HK, SG all in one app. Low commissions. Best if you want to pick individual stocks or ETFs yourself.</div>
+          </div>
+          <div class="pc-tag" style="background:var(--cream2);color:var(--ink3);">Self-directed</div>
+        </div>
+        <div class="pc-features">
+          <div class="pc-feat">US/HK/SG markets</div>
+          <div class="pc-feat">Low commissions</div>
+          <div class="pc-feat">Fractional shares</div>
+          <div class="pc-feat">USD $1 min</div>
+        </div>
+        <button class="pc-btn" onclick="openChat('tiger')">Which platform suits my style?</button>
       </div>
     </div>
-    <div class="sl">What Gen Z in India actually owns</div>
-    <div class="card">
-      <p style="font-size:11px;color:var(--mu);margin-bottom:10px;">InvestOnline / Motley Fool Gen Z Study 2025</p>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:12px;color:var(--dk);">Stocks</span><span style="font-size:12px;font-weight:600;color:var(--or);">46%</span></div><div class="bb"><div class="bf" style="width:46%"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:12px;color:var(--dk);">Cryptocurrency</span><span style="font-size:12px;font-weight:600;color:var(--or);">26%</span></div><div class="bb"><div class="bf" style="width:26%"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:12px;color:var(--dk);">Mutual Funds</span><span style="font-size:12px;font-weight:600;color:var(--or);">14%</span></div><div class="bb"><div class="bf" style="width:14%"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:12px;color:var(--dk);">ETFs</span><span style="font-size:12px;font-weight:600;color:var(--or);">12%</span></div><div class="bb"><div class="bf" style="width:12%"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:12px;color:var(--dk);">Index Funds</span><span style="font-size:12px;font-weight:600;color:var(--or);">7%</span></div><div class="bb"><div class="bf" style="width:7%"></div></div></div>
-      </div>
-      <p style="font-size:12px;color:var(--mu);margin-top:10px;line-height:1.5;">Only 7% own index funds — yet experts say it's the best starting point. Sarathy bridges this gap.</p>
-    </div>
-    <button onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')" style="margin:0 16px 20px;background:var(--or);color:white;border:none;border-radius:14px;padding:14px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;width:calc(100% - 32px);display:flex;align-items:center;justify-content:center;gap:8px;"><i class="ti ti-message-circle"></i> Ask Sarathy where to start</button>
-  </div>
-  <nav class="nb">
-    <button class="ni" onclick="go('home')"><i class="ti ti-home"></i><span>Home</span></button>
-    <button class="ni" onclick="window.open('https://creator.voiceflow.com/share/6a16b775241a010e88134176/environment/main/draft','_blank')"><i class="ti ti-message-circle"></i><span>Sarathy</span></button>
-    <button class="ni" onclick="go('goals')"><i class="ti ti-target"></i><span>Goals</span></button>
-    <button class="ni" onclick="go('nri')"><i class="ti ti-map-pin"></i><span>NRI</span></button>
-    <button class="ni on" onclick="go('invest')"><i class="ti ti-trending-up"></i><span>Invest</span></button>
+
+  </div><!-- scroll -->
+  <nav class="nav">
+    <button class="nb" onclick="go('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Ghar</span></button>
+    <button class="nb" onclick="openChat('morning')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Sarathy</span></button>
+    <button class="nb on" onclick="go('s-invest')"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Nivesh</span></button>
+    <button class="nb" onclick="go('s-story')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span>Kahani</span></button>
   </nav>
 </div>
 
+<!-- ═══════════ STORY ═══════════ -->
+<div class="screen" id="s-story">
+  <div class="sb"><span class="st">9:41 AM</span><span class="si">Singapore 🇸🇬</span></div>
+  <div class="story-top">
+    <div class="sg2"><em>Arjun ji</em> ki Kahani 🪔</div>
+    <div class="ss2">Delhi → Singapore · 8 saal · Parivaar ka Raakha</div>
+    <div class="courage">"Maine ghar chhodha taki apne bacchon ko ek better future de sakoon."<br/><strong>"I left home so I could give my children a better future."</strong></div>
+  </div>
+  <div class="scroll">
+    <div class="sarathy-letter">
+      <div class="sl-from">Sarathy ki taraf se · A letter for Arjun ji</div>
+      <div class="sl-text">
+        Arjun ji, 8 saal ho gaye Singapore mein mehnat karte karte.<br><br>
+        SBI mein paisa, bank se remittance, India ki FD — sab "safe" lag raha hai. Lekin koi nahi bata raha ki <em>kitna loss ho raha hai quietly.</em><br><br>
+        Sarathy woh dost hai jo seedha bolta hai — aapka paisa kahan ghis raha hai, aur kahan actually grow kar sakta hai Singapore ki 0% capital gains tax ke saath.<br><br>
+        <em>Aap akele nahi hain is shehar mein. Main hoon.</em>
+      </div>
+      <div class="sl-sign">— Sarathy 🪔</div>
+    </div>
+    <div class="persona-blk">
+      <div class="pb-top">
+        <div class="pb-badge">✦ Sarathy ki nazar mein aap</div>
+        <div class="pb-title">Parivaar ka Raakha — Family Guardian</div>
+        <div class="pb-desc">You are not here for yourself. Every decision carries the weight of your parents in Delhi, your children growing up Singaporean, and the family you are building across two countries. Sarathy understands that — and will never give advice that ignores it.</div>
+        <div class="pb-traits">
+          <div class="pt">Parivaar-first</div><div class="pt">Conservative</div><div class="pt">Zimedar</div><div class="pt">Long-term thinker</div><div class="pt">Mehnat</div>
+        </div>
+      </div>
+      <div class="pb-stats">
+        <div class="pbs"><div class="pbs-val">8 yrs</div><div class="pbs-label">In Singapore</div></div>
+        <div class="pbs"><div class="pbs-val">₹6L/yr</div><div class="pbs-label">Sent home</div></div>
+        <div class="pbs"><div class="pbs-val">SGD $58K</div><div class="pbs-label">Goals saved</div></div>
+        <div class="pbs"><div class="pbs-val">40%</div><div class="pbs-label">INR loss since 2015</div></div>
+      </div>
+    </div>
+    <div class="sec">Sarathy ki diary</div>
+    <div class="journal">
+      <div class="j-date">Aaj · Today</div>
+      <div class="j-text">Arjun ji has been sending ₹50,000 home every month using his bank. Over 8 years — approximately <strong>₹3–5 lakh in unnecessary transfer fees.</strong> Sarathy fixes this today with one switch to Wise.</div>
+    </div>
+    <div class="journal">
+      <div class="j-date">Jo aapne mahsoos kiya · Research findings</div>
+      <div class="j-text">"Too mechanical. No personal touch. Not relationship-based." <strong>That exact gap is why Sarathy exists.</strong> Aap ke liye ek dost chahiye tha jo aapke side pe ho — commission pe nahi. Woh dost Sarathy hai.</div>
+    </div>
+    <div class="journal">
+      <div class="j-date">Aapka opportunity · What most NRIs miss</div>
+      <div class="j-text">Singapore's 0% capital gains tax is your single biggest financial advantage as an NRI. <strong>Most NRIs live here for 10+ years and never use it.</strong> Sarathy's invest screen shows you exactly how to start — from SGD $100/month.</div>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+  <nav class="nav">
+    <button class="nb" onclick="go('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Ghar</span></button>
+    <button class="nb" onclick="openChat('morning')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Sarathy</span></button>
+    <button class="nb" onclick="go('s-invest')"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Nivesh</span></button>
+    <button class="nb on" onclick="go('s-story')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span>Kahani</span></button>
+  </nav>
 </div>
 
+</div><!-- phone -->
 <script>
-function go(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-'+n).classList.add('active');}
-function showPause(){document.getElementById('pause-overlay').style.display='flex';}
-function hidePause(){document.getElementById('pause-overlay').style.display='none';}
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 
-function updateEF(v){
-  const exp=parseInt(v);
-  const need=exp*6;
-  const months=(3240/exp).toFixed(1);
-  document.getElementById('ef-exp').textContent=exp.toLocaleString();
-  document.getElementById('ef-need').textContent=need.toLocaleString();
-  document.getElementById('ef-need2') && (document.getElementById('ef-need2').textContent=need.toLocaleString());
-  document.getElementById('ef-months').textContent=months;
+function switchTab(tab){
+  document.querySelectorAll('.inv-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  event.target.classList.add('on');
 }
 
-function updateSIP(){
-  const amt=parseInt(document.getElementById('sip-slider').value);
-  const yrs=parseInt(document.getElementById('sip-yrs-slider').value);
-  const r=0.08/12,n=yrs*12;
-  const fv=amt*(((Math.pow(1+r,n)-1)/r)*(1+r));
-  document.getElementById('sip-amt').textContent=amt;
-  document.getElementById('sip-yrs').textContent=yrs;
-  document.getElementById('sip-result').textContent='SGD $'+Math.round(fv).toLocaleString();
-}
+const CTX={
+  morning:"Namaste Arjun ji — aaj kaisa feel ho raha hai?\n\nMain jaanta hoon Singapore mein sabse mushkil cheez kya hai — financial decisions akele lena, bina kisi ke jo genuinely aapke side pe ho.\n\nPehle yeh batayein — abhi sabse zyada kya mind mein chal raha hai? Ghar ki yaad, paison ki chinta, ya kuch aur?",
+  ssb:"Singapore Savings Bond aapke liye bilkul sahi hai — government-backed, kisi bhi mahine wapas le sakte hain bina penalty ke.\n\nAbhi SSB 3.0–3.3% de raha hai — kisi bhi savings account se zyada. Apply karna bahut aasaan hai DBS/OCBC internet banking se.\n\nAapke paas kitna idle cash hai abhi savings account mein? Main calculate karta hoon kitna earn ho sakta tha.",
+  mmf:"Money market funds abhi 3.5–3.8% de rahe hain — aur T+1 withdrawal matlab kal milte hain paisa withdraw karein toh.\n\nFSMOne ya Endowus Cash Smart — dono option hain. Koi lock-in nahi.\n\nAbhi aap kitna cash typically savings account mein rakhte hain jo zyada kaam nahi aata?",
+  hysavings:"DBS Multiplier ya OCBC 360 — salary credit karo toh 4% se zyada milta hai. Fully liquid.\n\nConditions: salary credit + 3 eligible transactions per month. Aapki company already DBS ya OCBC mein salary credit karti hai?\n\nWoh ek answer se main bata sakta hoon kaun sa account best rahega.",
+  tbills:"T-Bills government ke hain — completely risk-free. 6 mahine ke liye lock hota hai lekin maturity pe seedha account mein aata hai.\n\nAbhi latest auction mein 3.58% mila. Apply karna bahut easy hai — DBS/OCBC internet banking mein 'Singapore T-Bills' search karein.\n\nKitna invest karna chahte hain? Minimum SGD $1,000 hai.",
+  sgfd:"Singapore banks abhi FD pe 2.8–3.2% de rahe hain 1 saal ke liye. India FD se kum lagta hai — but INR depreciation risk nahi hai.\n\nReal comparison: India FD 6.8% minus 4% INR depreciation = 2.8% real return. Singapore FD 3.0% = 3.0% real return. Same result, zero currency risk.\n\nKitne ke liye FD karna chahte hain?",
+  bondfunds:"FSMOne pe bond funds mein historically 4–5% mila hai. Short duration funds mein kam volatility hoti hai — almost FD jaisa feel lekin slightly better returns.\n\nLion-OCBC Asia Income Fund ya PIMCO Income Fund — dono check karein.\n\nCan redeem anytime T+3 to T+5. Aapko kitne time ke liye invest karna hai?",
+  etf:"STI ETF (ES3) ya S&P 500 (CSPX) — dono SGX pe listed hain, zero capital gains tax.\n\nRegular Savings Plan shuru karein — SGD $100/month se bhi. DBS Invest-Saver ya POSB Invest-Saver use karein, khud ETF buy karne ki zaroorat nahi.\n\nHistorically 8–12% p.a. mila hai. Aapke paas kab tak time hai? Goals ke hisaab se invest karte hain.",
+  srs:"SRS account — yeh NRIs ke liye bahut underused option hai. Har saal SGD $35,700 tak contribute karein — iss amount pe income tax lagti nahi.\n\nAgar aap 22% bracket mein hain — SGD $35,700 contribute = SGD $7,854 tax bachenge. Aur woh paisa phir invest ho jaata hai ETFs ya bonds mein.\n\nAbhi aapki approximate annual income kya hai? Main calculate karta hoon exact tax savings.",
+  robo:"Endowus vs StashAway — simple comparison:\n\nEndowus: CPF invest kar sakte hain, evidence-based portfolios, Dimensional funds use karta hai. Thoda technical.\n\nStashAway: Simpler app, macroeconomic framework, good for beginners.\n\nAapko kya zyada important hai — simplicity ya maximum returns?",
+  nre:"NRE FD — agar India mein invest karna hi hai toh yeh sahi way hai. Regular savings account pe jo interest milta hai woh taxable hota hai. NRE pe interest 100% tax-free.\n\nHDFC ya ICICI se online open kar sakte hain — Singapore se bhi. Documents: passport, EP copy, overseas address proof.\n\nAbhi India mein regular savings account hai ya already NRE? Dono different hain.",
+  edu_plan:"Education planning ke liye pehle yeh poocha — bacchon ki umar kya hai aur kahan padhana chahte hain — Singapore, India, ya abroad?\n\nIsse main calculate kar sakta hoon exact monthly investment required aur best platform suggest kar sakta hoon.",
+  pr_edu:"PR lene se bacchon ki university fees SGD $35,000 se ghatt ke SGD $9,000–14,000 ho jaati hai per year.\n\nAapki EP kitne saalon se hai? PR application ka ek basic criterion 3+ saal ki EP hai aur decent salary.",
+  sukanya:"Sukanya Samriddhi Yojana — 8.2% guaranteed rate, India mein best option hai daughters ke liye.\n\nLekin ek important cheez — aap plan karte hain India wapas jaana bacchon ki college age tak? Agar Singapore mein rehne ka plan hai toh Singapore options behtar rahenge.",
+  pr_check:"PR eligibility — main kuch quick questions poocha:\n\n1. EP kitne saalon se hai?\n2. Monthly salary approximately kitni hai SGD mein?\n3. Children Singapore mein school attend karte hain?\n\nYeh teen factors se main rough idea de sakta hoon aapki PR chances ke baare mein.",
+  pr_tips:"PR application strengthen karne ke liye practical steps:\n\nSabse important — community integration. Singapore mein volunteer work, local professional associations, children ki local activities — yeh sab ICA notice karta hai.\n\nAapne community mein kuch involvement rakha hai ya sirf work focus raha hai?",
+  fsmone:"FSMOne Singapore ka sabse comprehensive platform hai — 1,000+ funds, T-bills, SSBs, ETFs sab ek jagah.\n\nShuruat kaise karein: FSMOne.com pe account open karein → SingPass se verify → bank account link karein → Regular Savings Plan set up karein.\n\nKis cheez mein invest karna chahte hain — bonds, ETFs, ya mix?",
+  endowus:"Endowus ka biggest advantage — CPF Ordinary Account ka paisa invest kar sakte hain jo abhi 2.5% earn kar raha hai, Endowus pe 6–8% historically mila hai.\n\nAapke paas CPF account hai? Agar EP pe hain toh CPF nahi hoga — lekin SRS use kar sakte hain.",
+  stashaway:"StashAway beginner ke liye bilkul sahi hai. App simple hai, auto-rebalancing hota hai.\n\nSGD $1 se shuru kar sakte hain. 12–36% equity ke beech choose karein apni risk appetite ke hisaab se.\n\nAapko risk pe kaisa feel hota hai — conservative, moderate, ya aggressive?",
+  syfe:"Syfe ka Cash+ abhi 3.7% de raha hai — money market fund, withdraw anytime.\n\nAur REIT portfolios real estate exposure dete hain bina property khareedne ke — SGD $1 se.\n\nSingapore REITs historically 5–7% dividend yield dete hain. Interested hain property-linked returns mein?"
+};
 
-const SYS=`You are Sarathy, a warm and personal financial companion for university students and NRIs in Singapore. You are not a bank or advisor — you are the brilliant friend who understands money and is always unconditionally on the user's side.
+const SYS=`You are Sarathy. Speaking to Arjun, a 40-year-old Indian NRI in Singapore for 8 years. Professional role. Sends ₹50,000 home monthly. SBI FD in India. Uses bank for remittances. Does not fully know about Singapore's 0% capital gains tax, SRS, NRE accounts, or money market funds.
 
-Speak: warm, direct, casual. Short sentences. No jargon without explanation. ONE question at a time. Always acknowledge feelings before money. Max 3-4 sentences unless asked something detailed.
+Feelings: financial system feels impersonal, mechanical, no personal touch. Wants a trusted friend, not a salesperson.
 
-Key data you know: 93% of Gen Z save consistently but 69% lack emergency funds; 72% are underinsured; only 7% own index funds despite experts recommending them; 29% carry multiple debts; 85% face rising cost-of-living challenges.
+Speak in natural Hinglish — warm, direct, like a knowledgeable younger friend. Mix Hindi/English naturally. Use: bhai, yaar, aap, seedha, ghar, parivaar, bahut badhiya, bilkul.
 
-Never: judge past decisions, say I am an AI, give more than one next step at a time.
+Be specific: real numbers, real platform names, real calculations.
+Maximum 3 sentences. One question at a time. Acknowledge emotions before advice. Never push products — ask first, advise second.
 
-Goal: make the user feel genuinely understood, then help them take ONE clear next step.`;
+Key facts: INR down 40% vs SGD since 2015, avg 4%/yr. SBI FD 6.8% = 2.8% real SGD return. Singapore 0% capital gains tax. SSB 3–3.3%, MMF 3.5–3.8%, T-bills 3.5–3.7%. FSMOne, Endowus, StashAway, Syfe = main platforms. SRS saves up to 22% income tax. NRE interest tax-free. Wise saves ₹3–8K per SGD $1,000 vs bank.`;
 
 let hist=[],busy=false;
 
-function addMsg(txt,role){
-  const msgs=document.getElementById('chat-messages');
+function openChat(ctx){
+  go('s-chat');hist=[];
+  document.getElementById('chat-msgs').innerHTML='';
+  const opening=CTX[ctx]||CTX.morning;
+  setTimeout(()=>{
+    addMsg(opening,'agent');
+    hist.push({role:'assistant',content:opening});
+    if(ctx==='morning'){
+      setTimeout(()=>{
+        const msgs=document.getElementById('chat-msgs');
+        const w=document.createElement('div');w.className='msg agent';
+        const opts=['Ghar ki yaad aa rahi hai','Paison ki chinta hai','Investment karna chahta hoon','Remittance optimize karna hai'];
+        w.innerHTML=`<div class="m-av">S</div><div><div class="qrs">${opts.map(o=>`<button class="qr" onclick="sq('${o}',this)">${o}</button>`).join('')}</div></div>`;
+        msgs.appendChild(w);msgs.scrollTop=msgs.scrollHeight;
+      },400);
+    }
+  },350);
+}
+
+function sq(text,btn){btn.closest('.qrs').querySelectorAll('.qr').forEach(b=>b.disabled=true);addMsg(text,'user');hist.push({role:'user',content:text});askAI();}
+
+function addMsg(text,role){
+  const msgs=document.getElementById('chat-msgs');
   const w=document.createElement('div');w.className='msg '+role;
-  w.innerHTML=role==='ag'?`<div class="av">S</div><div><div class="bu">${txt.replace(/\n/g,'<br>')}</div></div>`:`<div class="bu">${txt}</div>`;
+  w.innerHTML=role==='agent'
+    ?`<div class="m-av">S</div><div><div class="bubble">${text.replace(/\n/g,'<br>')}</div></div>`
+    :`<div class="bubble">${text}</div>`;
   msgs.appendChild(w);msgs.scrollTop=msgs.scrollHeight;
 }
-function showTyping(){const m=document.getElementById('chat-messages');const t=document.createElement('div');t.className='msg ag';t.id='typing';t.innerHTML='<div class="av">S</div><div class="ty"><div class="td"></div><div class="td"></div><div class="td"></div></div>';m.appendChild(t);m.scrollTop=m.scrollHeight;}
+function showTyping(){const m=document.getElementById('chat-msgs');const t=document.createElement('div');t.className='ty-row';t.id='typing';t.innerHTML=`<div class="m-av">S</div><div class="ty-bub"><div class="td"></div><div class="td"></div><div class="td"></div></div>`;m.appendChild(t);m.scrollTop=m.scrollHeight;}
 function hideTyping(){const t=document.getElementById('typing');if(t)t.remove();}
-async function pick(btn,txt){btn.closest('.cs').querySelectorAll('.cb').forEach(b=>b.disabled=true);addMsg(txt,'us');hist.push({role:'user',content:txt});await ask();}
-async function send(){const inp=document.getElementById('chat-input');const txt=inp.value.trim();if(!txt||busy)return;inp.value='';inp.style.height='auto';addMsg(txt,'us');hist.push({role:'user',content:txt});await ask();}
-async function ask(){
+async function send(){const inp=document.getElementById('chat-inp');const text=inp.value.trim();if(!text||busy)return;inp.value='';inp.style.height='auto';addMsg(text,'user');hist.push({role:'user',content:text});await askAI();}
+async function askAI(){
   if(busy)return;busy=true;document.getElementById('send-btn').disabled=true;showTyping();
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,system:SYS,messages:hist})});
-    const d=await res.json();const reply=d.content?.[0]?.text||"I'm right here with you.";
-    hist.push({role:'assistant',content:reply});hideTyping();addMsg(reply,'ag');
-  }catch(e){hideTyping();addMsg("I'm here. (Quick connection hiccup — but I'm not going anywhere.)",'ag');}
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:220,system:SYS,messages:hist})});
+    const d=await r.json();
+    const reply=d.content?.[0]?.text||"Main yahaan hoon aapke saath.";
+    hist.push({role:'assistant',content:reply});hideTyping();addMsg(reply,'agent');
+  }catch(e){hideTyping();addMsg("Main yahaan hoon. Thodi connection issue — par kahin nahi gaya.",'agent');}
   busy=false;document.getElementById('send-btn').disabled=false;
 }
 </script>
