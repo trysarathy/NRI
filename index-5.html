@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sarathy — Namaste, Arjun 🪔</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --saffron:#E8722A;--saffron2:#C5591A;--saffron-soft:#FFF3E8;--saffron-mid:#FDDBB8;
+  --gold:#C9963A;--gold-soft:#FBF3E4;--gold-mid:#EDD49A;
+  --maroon:#8B1A1A;--maroon-soft:#FDF1F1;
+  --teal:#0F766E;--teal-soft:#F0FDFA;
+  --ink:#1C1410;--ink2:#4A3828;--ink3:#8C7560;
+  --cream:#FDFAF5;--cream2:#F6EFE3;--cream3:#EDE3D0;
+  --line:rgba(74,56,40,0.1);
+  --gn:#2D7A4F;--gnb:#EDF7F2;
+  --rd:#C13333;--rdb:#FDF1F1;
+  --bl:#1D4ED8;--blb:#EFF6FF;
+  --pu:#6D28D9;--pub:#F5F3FF;
+}
+body{font-family:'DM Sans',sans-serif;background:radial-gradient(ellipse at top,#2A1A08 0%,#0F0A05 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.phone{width:375px;height:812px;background:var(--cream);border-radius:44px;overflow:hidden;position:relative;box-shadow:0 0 0 1px rgba(255,255,255,0.07),0 50px 100px rgba(0,0,0,0.65),0 0 80px rgba(232,114,42,0.15),0 0 140px rgba(201,150,58,0.08)}
+.screen{display:none;flex-direction:column;height:100%;position:absolute;inset:0;background:var(--cream);z-index:1}
+.screen.active{display:flex}
+.statusbar{background:var(--ink);padding:14px 24px 10px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.st{color:rgba(255,255,255,0.9);font-size:13px;font-weight:600}
+.si{color:rgba(255,255,255,0.45);font-size:12px}
+.scroll{flex:1;overflow-y:auto;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.nav{background:var(--ink);display:flex;padding:10px 0 20px;flex-shrink:0}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.28);font-family:'DM Sans',sans-serif;transition:color 0.2s;padding:4px 0}
+.nb.on{color:var(--gold)}
+.nb svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.nb span{font-size:10px;font-weight:500}
+
+/* HOME HERO */
+.hero{background:linear-gradient(160deg,#2A1408 0%,#1A0C04 60%,#0F0802 100%);padding:22px 24px 24px;position:relative;overflow:hidden;flex-shrink:0}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(232,114,42,0.25) 0%,transparent 65%)}
+.hero::after{content:'';position:absolute;bottom:-30px;left:-30px;width:140px;height:140px;background:radial-gradient(circle,rgba(201,150,58,0.18) 0%,transparent 65%)}
+.h-diya{font-size:18px;margin-bottom:6px}
+.h-label{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:5px}
+.h-greet{font-family:'Cormorant Garamond',serif;font-size:27px;color:white;font-weight:500;line-height:1.25;margin-bottom:4px}
+.h-greet em{color:var(--gold);font-style:italic}
+.h-sub{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:12px;font-style:italic}
+.h-msg{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:18px}
+.h-msg strong{color:white;font-weight:500}
+.hi-word{color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px}
+.h-btn{background:var(--gold);color:var(--ink);border:none;border-radius:14px;padding:13px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.15s}
+.h-btn:active{opacity:0.85}
+
+/* SECTION */
+.sec{padding:14px 24px 8px;font-size:11px;color:var(--ink3);letter-spacing:0.09em;text-transform:uppercase;font-weight:500}
+
+/* RUPEE REALITY — the most important card */
+.rupee-card{margin:0 16px 12px;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.rc-top{background:linear-gradient(135deg,#2A0808 0%,#4A1010 100%);padding:18px}
+.rc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,114,42,0.2);border:1px solid rgba(232,114,42,0.3);color:#FDDBB8;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600;margin-bottom:8px}
+.rc-title{font-family:'Cormorant Garamond',serif;font-size:19px;color:white;font-weight:400;line-height:1.4;margin-bottom:6px}
+.rc-desc{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6}
+.rc-chart{background:white;padding:16px}
+.rc-chart-label{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:12px}
+.rc-timeline{position:relative;padding-left:0}
+.rc-year-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.rc-year{font-size:11px;color:var(--ink3);width:36px;flex-shrink:0}
+.rc-bar-wrap{flex:1;height:22px;background:var(--cream2);border-radius:4px;overflow:hidden;position:relative}
+.rc-bar{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:6px;font-size:11px;font-weight:600;color:white}
+.rc-bar.good{background:var(--gn)}
+.rc-bar.ok{background:var(--gold)}
+.rc-bar.bad{background:var(--saffron)}
+.rc-bar.worse{background:var(--rd)}
+.rc-val{font-size:12px;font-weight:700;color:var(--ink3);width:48px;text-align:right;flex-shrink:0}
+.rc-insight{background:var(--rdb);border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;align-items:flex-start}
+.rc-insight-icon{font-size:18px;flex-shrink:0}
+.rc-insight-text{font-size:13px;color:var(--rd);line-height:1.5;font-weight:500}
+.rc-insight-text strong{color:var(--maroon)}
+
+/* AWARENESS CARDS */
+.awareness-row{display:flex;gap:10px;padding:0 16px 12px}
+.aw-card{flex:1;background:white;border-radius:16px;border:1px solid var(--line);padding:14px;position:relative;overflow:hidden}
+.aw-emoji{font-size:20px;margin-bottom:6px}
+.aw-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;line-height:1;margin-bottom:3px}
+.aw-label{font-size:11px;color:var(--ink3);line-height:1.3}
+.aw-trend{font-size:11px;font-weight:600;margin-top:4px}
+.aw-card.highlight{background:linear-gradient(135deg,#0F2D22 0%,var(--teal) 100%)}
+.aw-card.highlight .aw-val{color:white}
+.aw-card.highlight .aw-label{color:rgba(255,255,255,0.6)}
+.aw-card.highlight .aw-trend{color:#4ADE80}
+
+/* GOALS */
+.goal-card{margin:0 16px 10px;background:white;border-radius:18px;border:1px solid var(--line);padding:16px}
+.gc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.gc-left{flex:1}
+.gc-emoji{font-size:20px;margin-bottom:4px}
+.gc-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.gc-sub{font-size:12px;color:var(--ink3)}
+.gc-pct{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--saffron);font-weight:500}
+.gc-amounts{display:flex;justify-content:space-between;font-size:12px;color:var(--ink3);margin-bottom:6px}
+.gc-amounts strong{color:var(--ink)}
+.gc-bar{height:7px;background:var(--saffron-soft);border-radius:4px;overflow:hidden;margin-bottom:10px}
+.gc-fill{height:100%;background:var(--saffron);border-radius:4px}
+.gc-add{width:100%;background:var(--saffron-soft);color:var(--saffron);border:1px dashed var(--saffron-mid);border-radius:10px;padding:9px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px}
+
+/* NRI SETUP CHECKLIST */
+.checklist-card{margin:0 16px 12px;background:white;border-radius:20px;border:1px solid var(--line);overflow:hidden}
+.cl-item{display:flex;gap:12px;padding:14px 16px;border-bottom:0.5px solid var(--line);cursor:pointer;align-items:flex-start;transition:background 0.15s}
+.cl-item:last-child{border-bottom:none}
+.cl-item:active{background:var(--cream2)}
+.cl-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.cl-num.done{background:var(--gnb);color:var(--gn)}
+.cl-num.now{background:var(--saffron);color:white}
+.cl-num.todo{background:var(--cream2);color:var(--ink3)}
+.cl-info{flex:1}
+.cl-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.cl-desc{font-size:12px;color:var(--ink3);line-height:1.45}
+.cl-badge{font-size:11px;font-weight:600;border-radius:20px;padding:3px 10px;flex-shrink:0;align-self:center}
+.cl-badge.done{background:var(--gnb);color:var(--gn)}
+.cl-badge.now{background:var(--saffron-soft);color:var(--saffron)}
+.cl-badge.todo{background:var(--cream2);color:var(--ink3)}
+
+/* SARATHY TIP */
+.s-tip{margin:0 16px 12px;background:rgba(232,114,42,0.06);border:1px solid rgba(232,114,42,0.14);border-radius:18px;padding:16px;display:flex;gap:12px}
+.s-tip-av{width:32px;height:32px;background:var(--saffron);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;color:white;font-style:italic;flex-shrink:0;margin-top:1px}
+.s-tip-content p{font-size:12px;font-weight:600;color:var(--saffron);margin-bottom:4px}
+.s-tip-content span{font-size:13px;color:var(--ink2);line-height:1.6}
+
+/* REMITTANCE CARD */
+.rem-card{margin:0 16px 12px;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.rem-top{background:linear-gradient(135deg,#0F2D22 0%,var(--teal) 100%);padding:16px 18px}
+.rem-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px}
+.rem-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:white;font-weight:400;line-height:1.35;margin-bottom:4px}
+.rem-title em{color:var(--gold);font-style:italic}
+.rem-sub{font-size:12px;color:rgba(255,255,255,0.5)}
+.rem-compare{background:white;padding:4px 0}
+.rem-row{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:0.5px solid var(--line)}
+.rem-row:last-child{border-bottom:none}
+.rem-method{flex:1}
+.rem-method-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:1px}
+.rem-method-detail{font-size:11px;color:var(--ink3)}
+.rem-saving{text-align:right;flex-shrink:0}
+.rem-saving-val{font-size:14px;font-weight:700}
+.rem-saving-val.best{color:var(--gn)}
+.rem-saving-val.ok{color:var(--gold)}
+.rem-saving-val.bad{color:var(--rd)}
+.rem-saving-label{font-size:10px;color:var(--ink3)}
+.best-pill{background:var(--gnb);color:var(--gn);border-radius:20px;padding:2px 8px;font-size:10px;font-weight:600}
+
+/* CHAT */
+.chat-hdr{background:linear-gradient(160deg,#2A1408 0%,#1A0C04 100%);padding:16px 20px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.c-av{width:44px;height:44px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink);font-style:italic;font-weight:600}
+.c-info p{color:white;font-size:15px;font-weight:600}
+.c-info span{color:rgba(255,255,255,0.45);font-size:12px}
+.odot{width:7px;height:7px;background:#4ADE80;border-radius:50%;display:inline-block;margin-right:5px}
+.c-back{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:20px;color:rgba(255,255,255,0.7);padding:6px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.chat-msgs{flex:1;overflow-y:auto;padding:20px 16px;display:flex;flex-direction:column;gap:14px;scrollbar-width:none;background:var(--cream)}
+.chat-msgs::-webkit-scrollbar{display:none}
+.msg{display:flex;gap:10px;max-width:85%}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.m-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),var(--saffron2));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;color:white;font-style:italic;flex-shrink:0;align-self:flex-end}
+.bubble{padding:12px 16px;border-radius:22px;font-size:14px;line-height:1.65;color:var(--ink)}
+.msg.agent .bubble{background:white;border:1px solid var(--line);border-bottom-left-radius:5px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.msg.user .bubble{background:var(--saffron);color:white;border-bottom-right-radius:5px}
+.qrs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.qr{background:var(--cream2);color:var(--saffron);border:1px solid rgba(232,114,42,0.2);border-radius:22px;padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.qr:hover{background:var(--saffron);color:white}
+.qr:disabled{opacity:0.4;cursor:default}
+.ty-row{display:flex;gap:10px;max-width:85%}
+.ty-bub{background:white;border:1px solid var(--line);border-radius:22px;border-bottom-left-radius:5px;padding:12px 16px;display:flex;gap:5px;align-items:center}
+.td{width:6px;height:6px;border-radius:50%;background:var(--ink3);animation:tb 1.2s infinite}
+.td:nth-child(2){animation-delay:0.2s}.td:nth-child(3){animation-delay:0.4s}
+@keyframes tb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.c-inp-row{padding:12px 16px;background:white;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-end;flex-shrink:0}
+.c-ta{flex:1;background:var(--cream2);border:1px solid var(--line);border-radius:20px;padding:10px 16px;font-size:14px;font-family:'DM Sans',sans-serif;resize:none;max-height:80px;line-height:1.4;color:var(--ink);outline:none}
+.c-send{width:42px;height:42px;border-radius:50%;background:var(--saffron);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity 0.15s}
+.c-send svg{width:18px;height:18px;stroke:white;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.c-send:disabled{opacity:0.35}
+
+/* AWARENESS SCREEN */
+.awareness-top{background:linear-gradient(160deg,#2A1408 0%,#1A0C04 100%);padding:22px 24px 24px;flex-shrink:0;position:relative;overflow:hidden}
+.awareness-top::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;background:radial-gradient(circle,rgba(232,114,42,0.2) 0%,transparent 65%)}
+.at-label{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:5px}
+.at-title{font-family:'Cormorant Garamond',serif;font-size:24px;color:white;font-weight:500;line-height:1.3;margin-bottom:4px}
+.at-title em{color:var(--gold);font-style:italic}
+.at-sub{font-size:13px;color:rgba(255,255,255,0.45)}
+.insight-card{margin:0 16px 12px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:white}
+.ic-top{padding:14px 16px;border-bottom:0.5px solid var(--line)}
+.ic-badge{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;margin-bottom:6px}
+.ic-badge.red{background:var(--rdb);color:var(--rd)}
+.ic-badge.green{background:var(--gnb);color:var(--gn)}
+.ic-badge.gold{background:var(--gold-soft);color:var(--gold)}
+.ic-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.ic-desc{font-size:13px;color:var(--ink2);line-height:1.6}
+.ic-desc strong{color:var(--ink);font-weight:600}
+.ic-body{padding:14px 16px}
+.ic-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:0.5px solid var(--line)}
+.ic-row:last-child{border-bottom:none}
+.ic-rl{font-size:13px;color:var(--ink2)}
+.ic-rv{font-size:14px;font-weight:700;color:var(--ink)}
+.ic-rv.red{color:var(--rd)}
+.ic-rv.green{color:var(--gn)}
+.ic-rv.gold{color:var(--gold)}
+.ic-cta{padding:0 16px 14px}
+.ic-btn{width:100%;background:var(--saffron);color:white;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px}
+.ic-btn.soft{background:var(--saffron-soft);color:var(--saffron)}
+
+/* NRE EXPLAINER */
+.nre-card{margin:0 16px 12px;background:white;border-radius:18px;border:1px solid var(--line);overflow:hidden}
+.nre-top{background:linear-gradient(135deg,#0F2D22 0%,var(--teal) 100%);padding:16px 18px}
+.nre-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:white;font-weight:400;line-height:1.35;margin-bottom:4px}
+.nre-title em{color:var(--gold);font-style:italic}
+.nre-sub{font-size:12px;color:rgba(255,255,255,0.5)}
+.nre-steps{padding:14px 16px}
+.nre-step{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start}
+.nre-step:last-child{margin-bottom:0}
+.ns-num{width:26px;height:26px;background:var(--saffron);color:white;border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ns-text{font-size:13px;color:var(--ink2);line-height:1.5}
+.ns-text strong{color:var(--ink);font-weight:600}
+
+/* STORY */
+.story-top{background:linear-gradient(160deg,#2A1408 0%,#1A0C04 100%);padding:22px 24px 26px;flex-shrink:0;position:relative;overflow:hidden}
+.story-top::before{content:'🪔';position:absolute;right:20px;top:20px;font-size:60px;opacity:0.12}
+.sg2{font-family:'Cormorant Garamond',serif;font-size:26px;color:white;font-weight:500;line-height:1.25;margin-bottom:4px}
+.sg2 em{color:var(--gold);font-style:italic}
+.ss2{font-size:13px;color:rgba(255,255,255,0.42);margin-bottom:12px}
+.courage{background:rgba(201,150,58,0.14);border:1px solid rgba(201,150,58,0.2);border-radius:12px;padding:12px 14px;font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(255,255,255,0.82);line-height:1.6;font-style:italic}
+.courage strong{color:var(--gold);font-style:normal}
+.sarathy-letter{margin:14px 16px 12px;background:linear-gradient(135deg,#2A1408 0%,var(--saffron) 100%);border-radius:20px;padding:20px;position:relative;overflow:hidden}
+.sarathy-letter::after{content:'🪔';position:absolute;right:14px;bottom:10px;font-size:50px;opacity:0.15}
+.sl-from{font-size:11px;color:rgba(255,255,255,0.38);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+.sl-text{font-family:'Cormorant Garamond',serif;font-size:17px;color:white;font-weight:400;line-height:1.7}
+.sl-text em{color:var(--gold);font-style:italic}
+.sl-sign{margin-top:14px;font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(255,255,255,0.5);font-style:italic}
+.persona-blk{margin:0 16px 12px;background:white;border-radius:20px;border:1px solid var(--line);overflow:hidden}
+.pb-top{background:linear-gradient(135deg,#2A1408 0%,#4A2010 100%);padding:16px 18px;position:relative;overflow:hidden}
+.pb-top::after{content:'🪔';position:absolute;right:12px;top:8px;font-size:40px;opacity:0.2}
+.pb-badge{display:inline-flex;align-items:center;gap:5px;background:var(--gold);color:var(--ink);border-radius:20px;padding:3px 12px;font-size:11px;font-weight:700;margin-bottom:8px}
+.pb-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:white;font-weight:500;margin-bottom:4px}
+.pb-desc{font-size:13px;color:rgba(255,255,255,0.62);line-height:1.55;margin-bottom:12px}
+.pb-traits{display:flex;flex-wrap:wrap;gap:6px}
+.pt{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.82);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500}
+.pb-stats{display:grid;grid-template-columns:1fr 1fr}
+.pbs{padding:14px 16px;border-right:0.5px solid var(--line);border-top:0.5px solid var(--line)}
+.pbs:nth-child(2){border-right:none}
+.pbs:nth-child(3){border-right:0.5px solid var(--line)}
+.pbs:nth-child(4){border-right:none}
+.pbs-val{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--saffron);font-weight:500;line-height:1}
+.pbs-label{font-size:11px;color:var(--ink3);margin-top:3px}
+.journal{margin:0 16px 10px;background:var(--cream2);border-radius:16px;padding:16px;border-left:3px solid var(--saffron)}
+.j-date{font-size:11px;color:var(--ink3);margin-bottom:5px;font-style:italic}
+.j-text{font-size:13px;color:var(--ink2);line-height:1.65}
+.j-text strong{color:var(--saffron);font-weight:600}
+.j-text .hw{color:var(--saffron);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+<!-- ═══════════ HOME ═══════════ -->
+<div class="screen active" id="s-home">
+  <div class="statusbar"><span class="st">9:41 AM</span><span class="si">Singapore 🇸🇬</span></div>
+  <div class="scroll">
+    <div class="hero">
+      <div class="h-diya">🪔</div>
+      <div class="h-label">Sarathy · Aapka Saathi</div>
+      <div class="h-greet">Namaste, <em>Arjun bhai</em> 🙏</div>
+      <div class="h-sub">Your companion in Singapore. Always on your side.</div>
+      <div class="h-msg">
+        You left your <span class="hi-word">ghar</span>, your parents, your <span class="hi-word">mitron</span> — to build something better here. That takes real strength.<br><br>
+        But here is what nobody tells NRIs: <strong>the money you are carefully saving in India may be quietly losing value every single year.</strong><br><br>
+        Sarathy is here to show you the full picture — and to be the trusted friend who is always on your side.
+      </div>
+      <button class="h-btn" onclick="openChat('morning')">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Baat karte hain Sarathy se
+      </button>
+    </div>
+
+    <!-- RUPEE REALITY — the big wake-up -->
+    <div class="sec">The truth nobody told you</div>
+    <div class="rupee-card">
+      <div class="rc-top">
+        <div class="rc-badge">⚠️ Rupee Reality Check</div>
+        <div class="rc-title">The Indian Rupee has fallen 40% against the SGD in 10 years.</div>
+        <div class="rc-desc">Your SBI Fixed Deposit at 6.8% sounds good — but if the rupee falls 4% against SGD each year, your real return in Singapore terms is barely 2.8%. You may be losing, not gaining.</div>
+      </div>
+      <div class="rc-chart">
+        <div class="rc-chart-label">SGD you got for ₹1,00,000 — year by year</div>
+        <div class="rc-year-row"><div class="rc-year">2015</div><div class="rc-bar-wrap"><div class="rc-bar good" style="width:90%">SGD $2,040</div></div></div>
+        <div class="rc-year-row"><div class="rc-year">2017</div><div class="rc-bar-wrap"><div class="rc-bar ok" style="width:80%">SGD $1,890</div></div></div>
+        <div class="rc-year-row"><div class="rc-year">2019</div><div class="rc-bar-wrap"><div class="rc-bar ok" style="width:72%">SGD $1,720</div></div></div>
+        <div class="rc-year-row"><div class="rc-year">2021</div><div class="rc-bar-wrap"><div class="rc-bar bad" style="width:64%">SGD $1,640</div></div></div>
+        <div class="rc-year-row"><div class="rc-year">2023</div><div class="rc-bar-wrap"><div class="rc-bar worse" style="width:56%">SGD $1,530</div></div></div>
+        <div class="rc-year-row"><div class="rc-year">2025</div><div class="rc-bar-wrap"><div class="rc-bar worse" style="width:50%">SGD $1,210</div></div></div>
+      </div>
+      <div class="rc-insight">
+        <div class="rc-insight-icon">📉</div>
+        <div class="rc-insight-text"><strong>₹1 lakh in 2015 = SGD $2,040. Same ₹1 lakh today = SGD $1,210.</strong> That is a 40% loss in real value — even before inflation. Sarathy can show you how to protect this.</div>
+      </div>
+    </div>
+
+    <!-- SNAPSHOT -->
+    <div class="sec">Aapki financial position · Your snapshot</div>
+    <div class="awareness-row">
+      <div class="aw-card highlight">
+        <div class="aw-emoji">📈</div>
+        <div class="aw-val" style="color:var(--gold);">0%</div>
+        <div class="aw-label">Capital Gains Tax in Singapore</div>
+        <div class="aw-trend">Invest here — pay zero tax on profits</div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-emoji">📉</div>
+        <div class="aw-val" style="color:var(--rd);">-4%/yr</div>
+        <div class="aw-label">Average INR depreciation vs SGD</div>
+        <div class="aw-trend" style="color:var(--rd);">Eroding India savings</div>
+      </div>
+    </div>
+    <div class="awareness-row" style="margin-top:-4px;">
+      <div class="aw-card">
+        <div class="aw-emoji">🏦</div>
+        <div class="aw-val" style="color:var(--saffron);">6.8%</div>
+        <div class="aw-label">SBI FD rate (India)</div>
+        <div class="aw-trend" style="color:var(--gold);">Real SG return: ~2.8%</div>
+      </div>
+      <div class="aw-card">
+        <div class="aw-emoji">💸</div>
+        <div class="aw-val" style="color:var(--rd);">₹8.05B</div>
+        <div class="aw-label">NRI remittances/year</div>
+        <div class="aw-trend" style="color:var(--ink3);">Most losing on transfer fees</div>
+      </div>
+    </div>
+
+    <!-- GOALS -->
+    <div class="sec">Aapke sapne · Your goals</div>
+    <div class="goal-card">
+      <div class="gc-top">
+        <div class="gc-left"><div class="gc-emoji">🏠</div><div class="gc-title">Parents' house renovation</div><div class="gc-sub">Delhi · Family promise</div></div>
+        <div class="gc-pct">58%</div>
+      </div>
+      <div class="gc-amounts"><span>SGD <strong>$14,500</strong> saved</span><span>of SGD $25,000</span></div>
+      <div class="gc-bar"><div class="gc-fill" style="width:58%"></div></div>
+      <button class="gc-add"><svg viewBox="0 0 24 24" width="13" height="13" stroke="var(--saffron)" stroke-width="2.5" fill="none" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to goal</button>
+    </div>
+    <div class="goal-card">
+      <div class="gc-top">
+        <div class="gc-left"><div class="gc-emoji">🎓</div><div class="gc-title">Children's education fund</div><div class="gc-sub">10-year horizon · SG + abroad</div></div>
+        <div class="gc-pct">22%</div>
+      </div>
+      <div class="gc-amounts"><span>SGD <strong>$44,000</strong> saved</span><span>of SGD $2,00,000</span></div>
+      <div class="gc-bar"><div class="gc-fill" style="width:22%"></div></div>
+      <button class="gc-add"><svg viewBox="0 0 24 24" width="13" height="13" stroke="var(--saffron)" stroke-width="2.5" fill="none" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to goal</button>
+    </div>
+
+    <!-- SARATHY TIP -->
+    <div class="s-tip">
+      <div class="s-tip-av">S</div>
+      <div class="s-tip-content">
+        <p>Sarathy ki honest salah</p>
+        <span>The biggest mistake NRIs make: keeping everything in Indian FDs while living in Singapore. Your SGD salary is strong. Your India savings are eroding. Sarathy can show you how to use Singapore's 0% capital gains tax to build real wealth — the thing most NRIs don't even know exists.</span>
+      </div>
+    </div>
+
+    <!-- REMITTANCE QUICK VIEW -->
+    <div class="sec">Save on every transfer home</div>
+    <div class="rem-card">
+      <div class="rem-top">
+        <div class="rem-label">Sending SGD $1,000 to India · Right now</div>
+        <div class="rem-title">Most NRIs lose <em>₹3,000–8,000</em> per transfer</div>
+        <div class="rem-sub">Compared to Wise mid-market rate</div>
+      </div>
+      <div class="rem-compare">
+        <div class="rem-row">
+          <div class="rem-method"><div class="rem-method-name">Wise App <span class="best-pill">Best</span></div><div class="rem-method-detail">Mid-market rate · Same day · App-based</div></div>
+          <div class="rem-saving"><div class="rem-saving-val best">₹62,480</div><div class="rem-saving-label">you receive</div></div>
+        </div>
+        <div class="rem-row">
+          <div class="rem-method"><div class="rem-method-name">Instarem</div><div class="rem-method-detail">Good rates · 1-2 days</div></div>
+          <div class="rem-saving"><div class="rem-saving-val ok">₹61,900</div><div class="rem-saving-label">you receive</div></div>
+        </div>
+        <div class="rem-row">
+          <div class="rem-method"><div class="rem-method-name">DBS bank transfer</div><div class="rem-method-detail">Convenient · Poor rate + fees</div></div>
+          <div class="rem-saving"><div class="rem-saving-val bad">₹59,200</div><div class="rem-saving-label">you receive</div></div>
+        </div>
+        <div class="rem-row">
+          <div class="rem-method"><div class="rem-method-name">Any Indian bank SWIFT</div><div class="rem-method-detail">Slowest · Worst rate</div></div>
+          <div class="rem-saving"><div class="rem-saving-val bad">₹57,800</div><div class="rem-saving-label">you receive</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin:0 16px 20px;">
+      <button onclick="openChat('remittance')" style="width:100%;background:var(--teal);color:white;border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:7px;">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Sarathy, optimise my remittances
+      </button>
+    </div>
+  </div>
+  <nav class="nav">
+    <button class="nb on" onclick="go('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Ghar</span></button>
+    <button class="nb" onclick="openChat('morning')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Sarathy</span></button>
+    <button class="nb" onclick="go('s-awareness')"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Jaankari</span></button>
+    <button class="nb" onclick="go('s-story')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span>Meri Kahani</span></button>
+  </nav>
+</div>
+
+<!-- ═══════════ CHAT ═══════════ -->
+<div class="screen" id="s-chat">
+  <div class="statusbar"><span class="st">9:41 AM</span><span class="si">Singapore 🇸🇬</span></div>
+  <div class="chat-hdr">
+    <div class="c-av">S</div>
+    <div class="c-info"><p>Sarathy</p><span><span class="odot"></span>Hamesha aapke saath · Always with you</span></div>
+    <button class="c-back" onclick="go('s-home')">← Back</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs"></div>
+  <div class="c-inp-row">
+    <textarea class="c-ta" id="chat-inp" placeholder="Sarathy se baat karein…" rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send()}"
+      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,80)+'px'"></textarea>
+    <button class="c-send" id="send-btn" onclick="send()">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+  <nav class="nav">
+    <button class="nb" onclick="go('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Ghar</span></button>
+    <button class="nb on" onclick="openChat('morning')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Sarathy</span></button>
+    <button class="nb" onclick="go('s-awareness')"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Jaankari</span></button>
+    <button class="nb" onclick="go('s-story')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span>Meri Kahani</span></button>
+  </nav>
+</div>
+
+<!-- ═══════════ AWARENESS / JAANKARI ═══════════ -->
+<div class="screen" id="s-awareness">
+  <div class="statusbar"><span class="st">9:41 AM</span><span class="si">Singapore 🇸🇬</span></div>
+  <div class="awareness-top">
+    <div class="at-label">Jaankari · Awareness you deserve</div>
+    <div class="at-title">What Singapore <em>actually</em><br/>offers you as an NRI</div>
+    <div class="at-sub">The things your bank relationship manager never told you.</div>
+  </div>
+  <div class="scroll" style="padding-top:14px;">
+
+    <!-- 0% CAPITAL GAINS -->
+    <div class="insight-card">
+      <div class="ic-top">
+        <div class="ic-badge green">✦ Exclusive to Singapore</div>
+        <div class="ic-title">0% Capital Gains Tax — your biggest financial advantage</div>
+        <div class="ic-desc">In India, if you sell shares at a profit, you pay 10–15% tax. In Singapore, you pay <strong>zero</strong>. This is legal, permanent, and almost no NRI uses it properly.</div>
+      </div>
+      <div class="ic-body">
+        <div class="ic-row"><span class="ic-rl">India capital gains tax</span><span class="ic-rv red">10–15% on profits</span></div>
+        <div class="ic-row"><span class="ic-rl">Singapore capital gains tax</span><span class="ic-rv green">0% — always</span></div>
+        <div class="ic-row"><span class="ic-rl">On SGD $50,000 profit</span><span class="ic-rv green">You keep all of it</span></div>
+        <div class="ic-row"><span class="ic-rl">Same profit in India</span><span class="ic-rv red">You pay ₹4–7 lakh tax</span></div>
+      </div>
+      <div class="ic-cta"><button class="ic-btn" onclick="openChat('capital_gains')">Sarathy, how do I use this?</button></div>
+    </div>
+
+    <!-- NRE ACCOUNT -->
+    <div class="nre-card">
+      <div class="nre-top">
+        <div class="nre-title">NRE Account — <em>tax-free interest</em> on India savings</div>
+        <div class="nre-sub">Most NRIs have regular savings accounts — which is wrong</div>
+      </div>
+      <div class="nre-steps">
+        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:10px;">Why NRE is better than a regular India savings account</div>
+        <div class="nre-step"><div class="ns-num">1</div><div class="ns-text"><strong>Interest is 100% tax-free in India.</strong> Regular savings account interest gets taxed. NRE interest does not. On ₹50 lakh FD at 6.8%, you save ₹1+ lakh in tax per year.</div></div>
+        <div class="nre-step"><div class="ns-num">2</div><div class="ns-text"><strong>Fully repatriable.</strong> You can move money from NRE back to Singapore anytime, freely. Regular accounts have restrictions on how much you can bring back.</div></div>
+        <div class="nre-step"><div class="ns-num">3</div><div class="ns-text"><strong>How to open:</strong> HDFC or ICICI online NRI section. Documents: passport, Singapore EP, overseas address proof. Takes 3–5 days.</div></div>
+      </div>
+      <div style="padding:0 16px 14px;"><button class="ic-btn" onclick="openChat('nre_account')">Sarathy, help me open an NRE account</button></div>
+    </div>
+
+    <!-- INDIA FD REALITY CHECK -->
+    <div class="insight-card">
+      <div class="ic-top">
+        <div class="ic-badge red">⚠️ Reality check</div>
+        <div class="ic-title">Your India FD is not earning what you think</div>
+        <div class="ic-desc">SBI FD at 6.8% looks good. But after rupee depreciation, your real return in SGD terms is much lower — sometimes negative.</div>
+      </div>
+      <div class="ic-body">
+        <div class="ic-row"><span class="ic-rl">SBI FD rate</span><span class="ic-rv">6.8% p.a.</span></div>
+        <div class="ic-row"><span class="ic-rl">Average INR depreciation vs SGD</span><span class="ic-rv red">-4% p.a.</span></div>
+        <div class="ic-row"><span class="ic-rl">Real return in SGD terms</span><span class="ic-rv gold">≈ 2.8% p.a.</span></div>
+        <div class="ic-row"><span class="ic-rl">Singapore SGB / ETF average</span><span class="ic-rv green">8–12% p.a. (0% tax)</span></div>
+        <div class="ic-row"><span class="ic-rl">Difference over 10 years</span><span class="ic-rv red">Can be SGD $80,000+</span></div>
+      </div>
+      <div class="ic-cta"><button class="ic-btn soft" onclick="openChat('india_fd')">Sarathy, what should I do instead?</button></div>
+    </div>
+
+    <!-- CHECKLIST -->
+    <div class="sec">NRI setup checklist — where are you?</div>
+    <div class="checklist-card">
+      <div class="cl-item" onclick="openChat('bank_setup')">
+        <div class="cl-num done">✓</div>
+        <div class="cl-info"><div class="cl-title">Singapore bank account open</div><div class="cl-desc">DBS, OCBC, or UOB. Already done for most NRIs.</div></div>
+        <div class="cl-badge done">Done</div>
+      </div>
+      <div class="cl-item" onclick="openChat('nre_account')">
+        <div class="cl-num now">2</div>
+        <div class="cl-info"><div class="cl-title">NRE account — tax-free India savings</div><div class="cl-desc">Most NRIs skip this and lose lakhs in unnecessary tax every year.</div></div>
+        <div class="cl-badge now">Now →</div>
+      </div>
+      <div class="cl-item" onclick="openChat('remittance')">
+        <div class="cl-num todo">3</div>
+        <div class="cl-info"><div class="cl-title">Optimise remittances — switch to Wise</div><div class="cl-desc">Saving ₹3,000–8,000 per transfer. On ₹50,000/month = ₹72,000–96,000 per year.</div></div>
+        <div class="cl-badge todo">Step 3</div>
+      </div>
+      <div class="cl-item" onclick="openChat('capital_gains')">
+        <div class="cl-num todo">4</div>
+        <div class="cl-info"><div class="cl-title">Start investing in Singapore — 0% tax</div><div class="cl-desc">Index funds, ETFs, SGBs — with zero capital gains tax. Move some savings here.</div></div>
+        <div class="cl-badge todo">Step 4</div>
+      </div>
+      <div class="cl-item" onclick="openChat('insurance')">
+        <div class="cl-num todo">5</div>
+        <div class="cl-info"><div class="cl-title">Insurance gap check</div><div class="cl-desc">72% of NRIs in Singapore are underinsured. Health, life, critical illness.</div></div>
+        <div class="cl-badge todo">Step 5</div>
+      </div>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+  <nav class="nav">
+    <button class="nb" onclick="go('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Ghar</span></button>
+    <button class="nb" onclick="openChat('morning')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Sarathy</span></button>
+    <button class="nb on" onclick="go('s-awareness')"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Jaankari</span></button>
+    <button class="nb" onclick="go('s-story')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span>Meri Kahani</span></button>
+  </nav>
+</div>
+
+<!-- ═══════════ MY STORY ═══════════ -->
+<div class="screen" id="s-story">
+  <div class="statusbar"><span class="st">9:41 AM</span><span class="si">Singapore 🇸🇬</span></div>
+  <div class="story-top">
+    <div class="sg2"><em>Arjun ji</em> ki Kahani 🪔</div>
+    <div class="ss2">Delhi → Singapore · 8 years · Family man · Builder</div>
+    <div class="courage">"Maine ghar chhodha taki apne bacchon ko ek better future de sakoon."<br/><strong>"I left home so I could give my children a better future."</strong></div>
+  </div>
+  <div class="scroll">
+    <div class="sarathy-letter">
+      <div class="sl-from">Sarathy ki taraf se · A letter for Arjun ji</div>
+      <div class="sl-text">
+        Arjun ji, aap yahaan aakar 8 saal mehnat kar rahe hain.<br><br>
+        Paise SBI mein, remittance bank se, insurance India ki — sab kuch theek lag raha hai. Lekin koi nahi bata raha ki Singapore mein rehte hue India mein invest karna, <em>actually kitna expensive ho sakta hai.</em><br><br>
+        Sarathy woh dost hai jo pehle poochhe — aap kya mehsoos kar rahe hain — aur phir honest bataaye ki aapke paise actually kahan ja rahe hain.<br><br>
+        <em>Aap akele nahi hain is shehar mein.</em> Main yahaan hoon.
+      </div>
+      <div class="sl-sign">— Sarathy 🪔</div>
+    </div>
+
+    <div class="persona-blk">
+      <div class="pb-top">
+        <div class="pb-badge">✦ Sarathy ki nazar mein</div>
+        <div class="pb-title">Parivaar ka Raakha — The Family Guardian</div>
+        <div class="pb-desc">You are not here for yourself. You are here for your parents in Delhi, your children in Singapore, and the family you are building across two countries. Every financial decision you make carries that weight. Sarathy understands that — and is always on your side.</div>
+        <div class="pb-traits">
+          <div class="pt">Parivaar-first · Family-first</div>
+          <div class="pt">Mehnat · Hard-working</div>
+          <div class="pt">Loyal · Conservative</div>
+          <div class="pt">Zimedar · Responsible</div>
+          <div class="pt">Long-term thinker</div>
+        </div>
+      </div>
+      <div class="pb-stats">
+        <div class="pbs"><div class="pbs-val">8 yrs</div><div class="pbs-label">In Singapore</div></div>
+        <div class="pbs"><div class="pbs-val">₹6L/yr</div><div class="pbs-label">Sent home</div></div>
+        <div class="pbs"><div class="pbs-val">SGD $58K</div><div class="pbs-label">Goals saved</div></div>
+        <div class="pbs"><div class="pbs-val">40%</div><div class="pbs-label">INR loss vs SGD since 2015</div></div>
+      </div>
+    </div>
+
+    <div class="sec">Sarathy ki diary · Journal</div>
+    <div class="journal">
+      <div class="j-date">Aaj · Today</div>
+      <div class="j-text">Arjun ji has been sending ₹50,000 home every month for 8 years. He has been using his bank for remittances — losing ₹3,000–5,000 per transfer. Over 8 years that is <strong>approximately ₹3–5 lakh in unnecessary fees.</strong> Sarathy is going to fix this today.</div>
+    </div>
+    <div class="journal">
+      <div class="j-date">Jo aapne mahsoos kiya · What you feel</div>
+      <div class="j-text">The financial system in Singapore feels impersonal. <span class="j-text hw">"Too mechanical. No personal touch. Not relationship-based."</span> <strong>That gap — between what you need and what institutions provide — is exactly why Sarathy exists.</strong> Aap ke liye ek dost chahiye tha. Woh dost Sarathy hai.</div>
+    </div>
+    <div class="journal">
+      <div class="j-date">Aapka sapna · Your dream</div>
+      <div class="j-text">Parents ki ghar ki renovation. Bacchon ki padhai. Retirement India mein ya Singapore mein — still deciding. <strong>Sarathy holds all of this at once</strong> and helps you make decisions that serve every part of your life — not just your bank balance.</div>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+  <nav class="nav">
+    <button class="nb" onclick="go('s-home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Ghar</span></button>
+    <button class="nb" onclick="openChat('morning')"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Sarathy</span></button>
+    <button class="nb" onclick="go('s-awareness')"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Jaankari</span></button>
+    <button class="nb on" onclick="go('s-story')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span>Meri Kahani</span></button>
+  </nav>
+</div>
+
+</div>
+<script>
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+
+const CTX={
+  morning:"Namaste Arjun ji — aaj kaisa feel ho raha hai?\n\nMain jaanta hoon Singapore mein akela rehna kabhi kabhi mushkil hota hai — khaas taur pe jab ghar ke log door hote hain aur aap yahan sab kuch akele handle karte hain.\n\nPehle yeh batayein — aaj kya sabse zyada mind mein chal raha hai?",
+  remittance:"Arjun ji, seedha pooch raha hoon — aap abhi remittance kaise karte hain? Bank se ya koi app se?\n\nKyunki agar aap bank se transfer kar rahe hain, toh har ₹50,000 transfer pe approximately ₹3,000–5,000 zyada ja raha hai Wise ke comparison mein. Per year ₹36,000–60,000.\n\nKitne saalon se bank transfer use kar rahe hain?",
+  capital_gains:"Singapore mein 0% capital gains tax — yeh sab se badi cheez hai jo NRIs use nahi karte.\n\nMath simple hai: agar aap Singapore mein SGD $50,000 invest karte hain aur 10 saal mein SGD $100,000 ho jaata hai — aap zero tax dete hain. India mein wahi profit pe ₹5–7 lakh tax lagta.\n\nAbhi aap Singapore mein kuch invest kar rahe hain ya sab India mein?",
+  nre_account:"NRE account — yeh step most NRIs miss karte hain aur lakhs lose karte hain.\n\nSimple difference: regular India savings account pe interest taxable hai. NRE account pe interest 100% tax free. Plus — aap kabhi bhi paisa wapas Singapore la sakte hain bina restriction ke.\n\nAapka India mein abhi kaunsa account hai — regular savings ya NRE already?",
+  india_fd:"Arjun ji, yeh sun ke thoda uncomfortable lagega — lekin aapko yeh jaanna chahiye.\n\nSBI FD 6.8% deta hai. Lekin rupee har saal average 4% girta hai SGD ke against. Matlab aapki real return Singapore terms mein sirf 2.8% hai.\n\nUsi paison ko Singapore index fund mein lagate toh 8–12% milta — aur zero tax. Aapke paas abhi India mein approximate kitna FD mein hai?",
+  insurance:"72% NRIs Singapore mein underinsured hain. Yeh serious problem hai.\n\nTeen cheezein honi chahiye: health insurance jo Singapore cover kare, life insurance agar dependent family hai, aur critical illness cover.\n\nAbhi aapke paas Singapore mein koi health insurance hai ya sirf company wala?",
+  bank_setup:"Singapore bank account toh already open hai — good. Ab usse properly link karna zaroori hai.\n\nDBS ya OCBC — dono ke liye aap NRI specific features enable kar sakte hain jo normal accounts mein nahi hote. Kaunsa bank hai aapka Singapore mein?"
+};
+
+const SYS=`You are Sarathy. You are speaking to Arjun, a 40-year-old Indian NRI who has been in Singapore for 8 years. He works in a professional role. He sends ₹50,000 home every month to his parents in Delhi. He has children growing up in Singapore. He has FDs in SBI India, uses his bank for remittances, and does not know about Singapore's 0% capital gains tax or NRE accounts properly.
+
+His core feelings from research: the financial system in Singapore feels impersonal, mechanical, no personal touch, not relationship-based. He wants a trusted friend who understands his India-Singapore context.
+
+How you speak to Arjun:
+- Warm, respectful, like a trusted younger friend who knows finance deeply
+- Mix Hindi and English naturally — Hinglish, the way educated NRIs speak
+- Use words like: bhai, yaar, aap, seedha, ghar, parivaar, Sarathy
+- Acknowledge emotions and family context before numbers
+- Be specific and concrete — real numbers, real calculations
+- Maximum 3 sentences. One question at a time.
+- Never lecture — ask first, advise second
+
+Key knowledge:
+- INR has depreciated ~40% vs SGD over 10 years, ~4% per year average
+- SBI FD at 6.8% = ~2.8% real SGD return after depreciation
+- Singapore 0% capital gains tax — most NRIs don't use this
+- NRE accounts: interest tax-free in India, fully repatriable, better than regular savings
+- Wise saves ₹3,000–8,000 per SGD $1,000 transfer vs banks
+- NRIs can invest in Singapore ETFs, index funds, SGBs with 0% tax on gains
+- 72% of NRIs in Singapore are underinsured`;
+
+let hist=[],busy=false;
+
+function openChat(ctx){
+  go('s-chat');hist=[];
+  document.getElementById('chat-msgs').innerHTML='';
+  const opening=CTX[ctx]||CTX.morning;
+  setTimeout(()=>{
+    addMsg(opening,'agent');
+    hist.push({role:'assistant',content:opening});
+    if(ctx==='morning'){
+      setTimeout(()=>{
+        const msgs=document.getElementById('chat-msgs');
+        const w=document.createElement('div');w.className='msg agent';
+        const opts=['Ghar ki yaad aa rahi hai','Paison ki chinta hai','Sab theek hai','India invest karna chahta hoon'];
+        w.innerHTML=`<div class="m-av">S</div><div><div class="qrs">${opts.map(o=>`<button class="qr" onclick="sq('${o}',this)">${o}</button>`).join('')}</div></div>`;
+        msgs.appendChild(w);msgs.scrollTop=msgs.scrollHeight;
+      },400);
+    }
+  },350);
+}
+
+function sq(text,btn){btn.closest('.qrs').querySelectorAll('.qr').forEach(b=>b.disabled=true);addMsg(text,'user');hist.push({role:'user',content:text});askAI();}
+
+function addMsg(text,role){
+  const msgs=document.getElementById('chat-msgs');
+  const w=document.createElement('div');w.className='msg '+role;
+  w.innerHTML=role==='agent'
+    ?`<div class="m-av">S</div><div><div class="bubble">${text.replace(/\n/g,'<br>')}</div></div>`
+    :`<div class="bubble">${text}</div>`;
+  msgs.appendChild(w);msgs.scrollTop=msgs.scrollHeight;
+}
+function showTyping(){const m=document.getElementById('chat-msgs');const t=document.createElement('div');t.className='ty-row';t.id='typing';t.innerHTML=`<div class="m-av">S</div><div class="ty-bub"><div class="td"></div><div class="td"></div><div class="td"></div></div>`;m.appendChild(t);m.scrollTop=m.scrollHeight;}
+function hideTyping(){const t=document.getElementById('typing');if(t)t.remove();}
+
+async function send(){const inp=document.getElementById('chat-inp');const text=inp.value.trim();if(!text||busy)return;inp.value='';inp.style.height='auto';addMsg(text,'user');hist.push({role:'user',content:text});await askAI();}
+
+async function askAI(){
+  if(busy)return;busy=true;document.getElementById('send-btn').disabled=true;showTyping();
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:220,system:SYS,messages:hist})});
+    const d=await r.json();
+    const reply=d.content?.[0]?.text||"Main yahaan hoon aapke saath.";
+    hist.push({role:'assistant',content:reply});hideTyping();addMsg(reply,'agent');
+  }catch(e){hideTyping();addMsg("Main yahaan hoon. (Thodi connection issue — par kahin nahi gaya.)",'agent');}
+  busy=false;document.getElementById('send-btn').disabled=false;
+}
+</script>
+</body>
+</html>
